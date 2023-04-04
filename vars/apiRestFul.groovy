@@ -1,8 +1,9 @@
 // vars/apiRestFul.groovy
-import com.example.utils.ConfigApiRest
 
 def call (Map pipelineParams) {
     
+    import com.example.utils.ConfigApiRest  
+
     def dockerLib = new com.example.docker.DockerLib()
 
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
@@ -42,7 +43,7 @@ def call (Map pipelineParams) {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
                         
                         //configRun(BranchName: pipelineParams."${BRANCH_NAME}")
-                        ConfigApiRest.configBuild(pipelineParams)
+                        ConfigApiRest.configRun(pipelineParams)
                         sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
                                                  ProjectName: pipelineParams.projectName,
                                                  BranchName: pipelineParams."${BRANCH_NAME}")
