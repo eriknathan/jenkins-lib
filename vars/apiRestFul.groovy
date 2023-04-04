@@ -10,6 +10,15 @@ def call (Map pipelineParams) {
     pipeline {
         agent any
 
+        options {
+        // Adicione a dependência do configFileProvider
+        // Certifique-se de atualizar a versão se necessário
+        // A versão 2.18 é usada como exemplo aqui
+            plugins {
+                configFileProvider('2.18')
+            }
+        }
+
         stages {
             
             stage('Build') {
