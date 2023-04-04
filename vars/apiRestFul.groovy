@@ -2,9 +2,8 @@
 
 def call (Map pipelineParams) {
     
-    import com.example.utils.ConfigApiRest  
-
     def dockerLib = new com.example.docker.DockerLib()
+    def configApiRest = new.example.utils.ConfigApiRest()
 
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
     
@@ -19,7 +18,7 @@ def call (Map pipelineParams) {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
                         //configBuild(ProjectName: pipelineParams.projectName)
-                        ConfigApiRest.configBuild(pipelineParams)
+                        configApiRest.configBuild(pipelineParams)
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
                                                    DockerContext: pipelineParams.dockerContext,
@@ -43,7 +42,7 @@ def call (Map pipelineParams) {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
                         
                         //configRun(BranchName: pipelineParams."${BRANCH_NAME}")
-                        ConfigApiRest.configRun(pipelineParams)
+                        configApiRest.configRun(pipelineParams)
                         sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
                                                  ProjectName: pipelineParams.projectName,
                                                  BranchName: pipelineParams."${BRANCH_NAME}")
