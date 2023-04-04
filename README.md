@@ -82,7 +82,7 @@ vars/
   formatDateTime.groovy
 ```
 
-1. 1. Adicione o seguinte código ao arquivo **`formatDateTime.groovy`**:
+3. Adicione o seguinte código ao arquivo **`formatDateTime.groovy`**:
 
 ```groovy
 def call(format) {
@@ -90,9 +90,9 @@ def call(format) {
 }
 ```
 
-1. Faça o commit das alterações e faça o push para o repositório Git.
-2. Configure o Jenkins para utilizar a biblioteca compartilhada conforme descrito no item 1.
-3. Crie um novo pipeline e adicione o seguinte código:
+4. Faça o commit das alterações e faça o push para o repositório Git.
+5. Configure o Jenkins para utilizar a biblioteca compartilhada conforme descrito no item 1.
+6. Crie um novo pipeline e adicione o seguinte código:
 
 ```groovy
 @Library('my-shared-library')  // Importa a biblioteca compartilhada
@@ -112,7 +112,7 @@ pipeline {
 }
 ```
 
-1. Execute o pipeline e verifique a saída para ver a data e hora formatada.
+7. Execute o pipeline e verifique a saída para ver a data e hora formatada.
 
 Neste exemplo, a função **`formatDateTime`** é definida no arquivo **`formatDateTime.groovy`** e pode ser importada pelo pipeline utilizando a declaração **`@Library('my-shared-library')`**. O pipeline utiliza a função para obter a data e hora atual em um formato específico e imprimir na saída do console.
 
