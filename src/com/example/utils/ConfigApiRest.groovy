@@ -1,8 +1,6 @@
 // src/com/example/utils/ConfigApiRest.groovy
 package com.example.utils
 
-import org.jenkinsci.plugins.configfiles.ConfigFile;
-
 class ConfigApiRest {
 	
     static void configBuild(Map params) {
