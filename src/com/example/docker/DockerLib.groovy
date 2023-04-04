@@ -1,4 +1,4 @@
-package com.isi.docker
+package com.example.docker
 
 class DockerLib {
 
