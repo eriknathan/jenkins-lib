@@ -2,7 +2,7 @@ def call (Map pipelineParams) {
     
     def dockerLib = new com.example.docker.DockerLib()
 
-    pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_ID}"
+    pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
     
     pipeline {
         agent any
@@ -15,7 +15,6 @@ def call (Map pipelineParams) {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
                         configBuild(ProjectName: pipelineParams.projectName)
-
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
                                                    DockerContext: pipelineParams.dockerContext,
@@ -39,7 +38,6 @@ def call (Map pipelineParams) {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
                         
                         configRun(BranchName: pipelineParams."${BRANCH_NAME}")
-
                         sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
                                                  ProjectName: pipelineParams.projectName,
                                                  BranchName: pipelineParams."${BRANCH_NAME}")
