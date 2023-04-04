@@ -44,15 +44,15 @@ def call (Map pipelineParams) {
                                                  ProjectName: pipelineParams.projectName,
                                                  BranchName: pipelineParams."${BRANCH_NAME}")
                     }
+                    deleteDir()
                 }
             }
-            deleteDir()
         }
     }
 }
 
 def configBuild(Map params){
-	if ("${params.ProjectName}" == "apirestful") {
+	if ("${params.ProjectName}" == "apirestul") {
 		configFileProvider(
 			[configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
 		}
