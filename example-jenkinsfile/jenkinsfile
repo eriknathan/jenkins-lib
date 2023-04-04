@@ -1,6 +1,6 @@
 @Library('jenkins-lib') _
 apiRestFul(
-	projectName: "jenkinslib-multbranch",
+	projectName: "apiRestFul",
 	dockerfilePath: "Dockerfile",
 	dockerContext: "."
 )
