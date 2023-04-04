@@ -3,7 +3,6 @@
 def call (Map pipelineParams) {
     
     def dockerLib = new com.example.docker.DockerLib()
-    def configApiRest = new com.example.utils.ConfigApiRest()
 
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
     
