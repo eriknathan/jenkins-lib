@@ -1,7 +1,7 @@
 // src/com/example/utils/ConfigApiRest.groovy
-import org.jenkinsci.plugins.configfiles.ConfigFile;
-
 package com.example.utils
+
+import org.jenkinsci.plugins.configfiles.ConfigFile;
 
 class ConfigApiRest {
 	
