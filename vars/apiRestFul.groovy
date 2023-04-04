@@ -44,9 +44,9 @@ def call (Map pipelineParams) {
                                                  ProjectName: pipelineParams.projectName,
                                                  BranchName: pipelineParams."${BRANCH_NAME}")
                     }
-                    deleteDir()
                 }
             }
+            deleteDir()
         }
     }
 }
