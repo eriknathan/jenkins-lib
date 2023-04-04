@@ -61,4 +61,4 @@ def call (Map pipelineParams) {
 //         }
 //         sh "sudo python3 alerta-discord-pipeline.py"
 //     }
-}
+//}
