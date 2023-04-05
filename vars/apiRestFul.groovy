@@ -4,7 +4,10 @@ def call (Map pipelineParams) {
     
     def dockerLib = new com.example.docker.DockerLib()
 
+    pipelineParams.projectName = "apirestful"
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
+    pipelineParams.dockerfilePath = "Dockerfile"
+    pipelineParams.dockerContext = "."
     
     pipeline {
         agent any
