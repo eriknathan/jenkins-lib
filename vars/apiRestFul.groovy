@@ -5,7 +5,6 @@ def call (Map pipelineParams) {
     def dockerLib = new com.example.docker.DockerLib()
 
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
-    pipelineParams.projectName = "apirestful"
     pipelineParams.dockerfilePath = "Dockerfile"
     pipelineParams.dockerContext = "."
     
@@ -19,12 +18,12 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
-                        configBuild(ProjectName: "apirestful")                        
+                        configBuild(ProjectName: pipelineParams.projectName)                        
 
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
                                                    DockerContext: pipelineParams.dockerContext,
-                                                   ProjectName: "apirestful")
+                                                   ProjectName: pipelineParams.projectName)
                     }
                 }
             }
