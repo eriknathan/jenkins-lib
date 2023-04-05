@@ -18,7 +18,6 @@ class DockerLib {
         
         "docker image pull ${params.DockerImage}"
         //"docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d"
-        //"docker run -p 8000:8000 ${params.DockerImage}"
     }
 
 }
