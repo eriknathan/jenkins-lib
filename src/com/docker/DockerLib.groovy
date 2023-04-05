@@ -1,6 +1,6 @@
-// src/com/example/docker/DockerLib.groovy
+// src/com/docker/DockerLib.groovy
 
-package com.example.docker
+package com.docker
 
 class DockerLib {
 

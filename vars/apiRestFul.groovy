@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
     
-    def dockerLib = new com.example.docker.DockerLib()
+    def dockerLib = new com.docker.DockerLib()
 
     pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
     pipelineParams.dockerfilePath = "Dockerfile"
