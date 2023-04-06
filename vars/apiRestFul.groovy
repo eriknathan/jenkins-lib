@@ -18,7 +18,7 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
-                        configBuild(ProjectName: pipelineParams.projectName)                        
+                        dockerLib.configBuild(ProjectName: pipelineParams.projectName)                        
 
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
@@ -54,13 +54,13 @@ def call (Map pipelineParams) {
         }
     }
 }
-
-def configBuild(Map params) {
-    if ("${params.ProjectName}" == 'apirestful') {
-        configFileProvider([configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]){}
-        sh "sudo python3 alerta-discord-pipeline.py"
-    }
-}
+// criar uma função apenas com o configFileProvider, e criar um arquivo separado para essa pipeline de configuções e chamar a função com o configFile... nele.
+// def configBuild(Map params) {
+//     if ("${params.ProjectName}" == 'apirestful') {
+//         configFileProvider([configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]){}
+//         sh "sudo python3 alerta-discord-pipeline.py"
+//     }
+// }
 
 def configRun(Map params) {
     if ("${BRANCH_NAME}"=="main") {
