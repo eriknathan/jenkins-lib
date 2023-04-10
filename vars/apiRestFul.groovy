@@ -42,7 +42,7 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
                         
-                        configRun(BranchName: pipelineParams."${BRANCH_NAME}")
+                        // configRun(BranchName: pipelineParams."${BRANCH_NAME}")
                         
                         sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
                                                  ProjectName: pipelineParams.projectName,
@@ -55,20 +55,28 @@ def call (Map pipelineParams) {
     }
 }
 // criar uma função apenas com o configFileProvider, e criar um arquivo separado para essa pipeline de configuções e chamar a função com o configFile... nele.
-def configBuild(Map params) {
-    if ("${params.ProjectName}" == 'apirestful') {
-        configFileProvider(
-            [configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
-            sh "sudo python3 alerta-discord-pipeline.py"
-        }
+// def configBuild(Map params) {
+//     if ("${params.ProjectName}" == 'apirestful') {
+//         configFileProvider(
+//             [configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
+//             sh "sudo python3 alerta-discord-pipeline.py"
+//         }
+//     }
+// }
+
+def configBuild = {
+    configFileProvider(
+        [configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
+        sh "sudo python3 alerta-discord-pipeline.py"
     }
+
 }
 
-def configRun(Map params) {
-    if ("${BRANCH_NAME}"=="main") {
-        configFileProvider(
-            [configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
-            sh "sudo python3 alerta-discord-pipeline.py"
-        }
-    }
-}
+// def configRun(Map params) {
+//     if ("${BRANCH_NAME}"=="main") {
+//         configFileProvider(
+//             [configFile(fileId: '9b574e66-ecee-4080-a3b0-890227ab7314', targetLocation: "alerta-discord-pipeline.py")]) {
+//             sh "sudo python3 alerta-discord-pipeline.py"
+//         }
+//     }
+// }
