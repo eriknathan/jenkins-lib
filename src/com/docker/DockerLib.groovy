@@ -22,8 +22,9 @@ class DockerLib {
 
     def configBuild(Map params){
         if ("${params.BranchName}" == 'main') {
-            "echo Branch: ${params.BranchName}"
-            configFileProvider([configFile(fileId: '8bae9a15-6b79-4050-afe0-3b6bcc125c78', targetLocation: '.env')]) {}
+            configFileProvider([configFile(fileId: '8bae9a15-6b79-4050-afe0-3b6bcc125c78', targetLocation: '.env')]) {
+                "echo Branch: ${params.BranchName}"
+            }
         }
     }
 }
