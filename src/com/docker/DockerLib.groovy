@@ -19,4 +19,10 @@ class DockerLib {
         "docker image pull ${params.DockerImage}"
         //"docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d"
     }
+
+    def configBuild(Map params) {
+        if ("${params.BranchName}" == 'main') {
+            configFileProvider([configFile(fileId: '8bae9a15-6b79-4050-afe0-3b6bcc125c78', targetLocation: '.env')]) {}
+        }
+    }
 }
