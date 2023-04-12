@@ -18,7 +18,7 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
-                        dockerLib.configBuild(ProjectName: pipelineParams.projectName)                        
+                        sh dockerLib.configBuild(ProjectName: pipelineParams.projectName)                        
 
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
