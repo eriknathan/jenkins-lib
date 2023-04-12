@@ -42,7 +42,7 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
                         
-                        configRun(BranchName: pipelineParams."${BRANCH_NAME}")
+                        //configRun(BranchName: pipelineParams."${BRANCH_NAME}")
                         
                         sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
                                                  ProjectName: pipelineParams.projectName,
