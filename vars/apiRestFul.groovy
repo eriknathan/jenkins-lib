@@ -18,7 +18,7 @@ def call (Map pipelineParams) {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
-                        dockerLib.configBuild(ProjectName: pipelineParams."${BRANCH_NAME}")                        
+                        configBuild(ProjectName: pipelineParams."${BRANCH_NAME}")                        
 
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
@@ -52,5 +52,12 @@ def call (Map pipelineParams) {
                 }
             }
         }
+    }
+}
+
+def configBuild(Map params){
+    if ("${params.BranchName}" == 'main') {
+        "echo Branch: ${params.BranchName}"
+        configFileProvider([configFile(fileId: '8bae9a15-6b79-4050-afe0-3b6bcc125c78', targetLocation: '.env')]) {}
     }
 }
