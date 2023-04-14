@@ -35,7 +35,7 @@ def call (Map pipelineParams) {
                 }
             }
 
-            stage('Run') {
+            stage('Pull') {
                 steps {
                     script {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
