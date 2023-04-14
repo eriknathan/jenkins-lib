@@ -19,4 +19,8 @@ class DockerLib {
         "docker image pull ${params.DockerImage}"
         //"docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d"
     }
+
+    def imgPullPhase(Map params){
+       "docker image pull ${params.DockerImage}"
+    }
 }

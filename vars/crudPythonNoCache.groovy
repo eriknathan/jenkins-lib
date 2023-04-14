@@ -1,4 +1,4 @@
-// vars/apiRestFul.groovy
+// vars/crudPythonNoDatabase.git.groovy
 
 def call (Map pipelineParams) {
     
@@ -17,8 +17,6 @@ def call (Map pipelineParams) {
                 steps {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
-
-                        sh configBuild(ProjectName: pipelineParams."${BRANCH_NAME}")                        
 
                         sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
@@ -41,23 +39,12 @@ def call (Map pipelineParams) {
                 steps {
                     script {
                         echo "Fazendo o RUN da imagem para Rodar no nó host!"
-                        
-                        //configRun(BranchName: pipelineParams."${BRANCH_NAME}")
-                        
-                        sh dockerLib.imgRunPhase(DockerImage: pipelineParams.dockerImage,
-                                                 ProjectName: pipelineParams.projectName,
-                                                 BranchName: pipelineParams."${BRANCH_NAME}")
+                                                
+                        sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
                     }
                     deleteDir()
                 }
             }
         }
-    }
-}
-
-def configBuild(Map params){
-    if ("${params.BranchName}" == 'main') {
-        "echo Branch: ${params.BranchName}"
-        configFileProvider([configFile(fileId: '8bae9a15-6b79-4050-afe0-3b6bcc125c78', targetLocation: '.env')]) {}
     }
 }
