@@ -5,7 +5,8 @@ package com.docker
 class DockerLib {
 
     def imgBuildPhase(Map params){
-        "docker build -t ${params.DockerImage} --no-cache -f ${params.DockerfilePath} ${params.DockerContext}"
+        sh "echo Teste: ${params.DockerImage}"
+        //"docker build -t ${params.DockerImage} --no-cache -f ${params.DockerfilePath} ${params.DockerContext}"
     }
 
     def imgPushPhase(Map params){
