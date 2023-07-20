@@ -1,4 +1,4 @@
-// vars/crudPythonNoDatabase.git.groovy
+// vars/exemploPipeline.groovy
 
 def call (Map pipelineParams) {
     
@@ -9,16 +9,29 @@ def call (Map pipelineParams) {
     pipelineParams.dockerContext = "."
     
     pipeline {
-        agent any
+        agent { 
+            label 'ubuntu'
+        }
 
         stages {
             
-            stage('Build') {
+            stage ('Git Checkout') {
+                steps {
+                    script {
+                        echo " --------------------------------------------------------------------------------------- "
+                        echo " INICIANDO O CHECKOUT DO CÓDIGO FONTE DO REPOSITÓRIO GIT"
+                        echo " --------------------------------------------------------------------------------------- "
+				    }
+				    //checkout scm
+                }	
+			}
+
+            stage('Image Build') {
                 steps {
                     script {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
-                        sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
+                        //sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    DockerImage: pipelineParams.dockerImage,
                                                    DockerContext: pipelineParams.dockerContext,
                                                    ProjectName: pipelineParams.projectName)
@@ -26,23 +39,22 @@ def call (Map pipelineParams) {
                 }
             }
 
-            stage('Push') {
+            stage('Image Push') {
                 steps {
                     script {
                         echo "Fazendo o PUSH da imagem!"
-                        sh dockerLib.imgPushPhase(DockerImage: pipelineParams.dockerImage)
+                        //sh dockerLib.imgPushPhase(DockerImage: pipelineParams.dockerImage)
                     }
                 }
             }
 
-            stage('Pull') {
+            stage('Image Pull') {
                 steps {
                     script {
-                        echo "Fazendo o RUN da imagem para Rodar no nó host!"
+                        echo "Fazendo o Pull da imagem para Rodar no nó host!"
                                                 
-                        sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
+                        //sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
                     }
-                    deleteDir()
                 }
             }
         }

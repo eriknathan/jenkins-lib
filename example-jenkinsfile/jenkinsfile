@@ -1,5 +1,5 @@
 @Library('jenkins-lib') _
 
-apiRestFul(
-	projectName: "apirestful"
+exemploPipeline(
+	projectName: "exemplo"
 )
