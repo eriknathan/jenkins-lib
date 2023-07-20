@@ -29,7 +29,9 @@ def call (Map pipelineParams) {
             stage('Image Build') {
                 steps {
                     script {
-                        echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
+                        echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O BUILD DA IMAGEM: ${pipelineParams.dockerImage} "
+						echo " --------------------------------------------------------------------------------------- "
 
                         //sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
                                                    //DockerImage: pipelineParams.dockerImage,
@@ -42,16 +44,20 @@ def call (Map pipelineParams) {
             stage('Image Push') {
                 steps {
                     script {
-                        echo "Fazendo o PUSH da imagem!"
+						echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O PUSH DA IMAGEM: ${pipelineParams.dockerImage} "
+						echo " --------------------------------------------------------------------------------------- "
                         //sh dockerLib.imgPushPhase(DockerImage: pipelineParams.dockerImage)
                     }
                 }
             }
 
-            stage('Image Pull') {
+            stage('Image Run') {
                 steps {
                     script {
-                        echo "Fazendo o Pull da imagem para Rodar no nó host!"
+						echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O RUN DA IMAGEM: ${pipelineParams.dockerImage} "
+						echo " --------------------------------------------------------------------------------------- "
                                                 
                         //sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
                     }
