@@ -32,9 +32,9 @@ def call (Map pipelineParams) {
                         echo "Fazendo o BUILD da imagem! ${JOB_NAME} | ${pipelineParams.dockerImage}"
 
                         //sh dockerLib.imgBuildPhase(DockerfilePath: pipelineParams.dockerfilePath,
-                                                   DockerImage: pipelineParams.dockerImage,
-                                                   DockerContext: pipelineParams.dockerContext,
-                                                   ProjectName: pipelineParams.projectName)
+                                                   //DockerImage: pipelineParams.dockerImage,
+                                                   //DockerContext: pipelineParams.dockerContext,
+                                                   //ProjectName: pipelineParams.projectName)
                     }
                 }
             }
