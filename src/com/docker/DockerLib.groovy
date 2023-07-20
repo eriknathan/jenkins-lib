@@ -7,10 +7,7 @@ class DockerLib {
     def imgBuildPhase(Map params){
         ("echo DOCKER_IMAGE=${params.DockerImage} >> .env;" +
          "echo CONTAINER_NAME=${params.ProjectName}-${params.BranchName} >> .env;" +
-        
-         //"docker image pull ${params.DockerImage};" +
-         "docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d")
-        //"echo Teste: ${params.DockerImage}; docker compose --help; docker --help"
+         "echo Teste: ${params.DockerImage}; docker compose --help; docker --help")
         //"docker build -t ${params.DockerImage} --no-cache -f ${params.DockerfilePath} ${params.DockerContext}"
     }
 
