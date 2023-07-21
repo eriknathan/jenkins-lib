@@ -21,7 +21,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O Pull DA IMAGEM: ${pipelineParams.dockerImage} "
 						echo " --------------------------------------------------------------------------------------- "
 
-                        sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
+                        //sh dockerLib.imgPullPhase(DockerImage: pipelineParams.dockerImage)
                     }
                 }
             }
