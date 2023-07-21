@@ -1,6 +1,6 @@
 // src/com/trivy/TrivyLib.groovy
 
-package com.docker
+package com.trivy
 
 class TrivyLib {
 
