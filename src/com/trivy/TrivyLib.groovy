@@ -2,7 +2,7 @@
 
 package com.docker
 
-class DockerLib {
+class TrivyLib {
 
     def trivyScanning(Map params){
         ("echo Realizando o Sacanning da Imagem: ${params.DockerImage};" +
