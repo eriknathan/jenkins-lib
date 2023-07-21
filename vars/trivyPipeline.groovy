@@ -5,7 +5,7 @@ def call (Map pipelineParams) {
     def dockerLib = new com.docker.DockerLib()
     def trivyLib = new com.trivy.TrivyLib()
 
-    pipelineParams.dockerImage = "nginx:latest"
+    pipelineParams.dockerImage = "cybersec-api:latest"
     
     pipeline {
         agent { 
