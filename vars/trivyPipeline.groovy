@@ -5,10 +5,7 @@ def call (Map pipelineParams) {
     def dockerLib = new com.docker.DockerLib()
     def trivyLib = new com.trivy.TrivyLib()
 
-    //pipelineParams.dockerImage = "${DOCKER_REGISTRY}/${pipelineParams.projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
     pipelineParams.dockerImage = "nginx:latest"
-    pipelineParams.dockerfilePath = "Dockerfile"
-    pipelineParams.dockerContext = "."
     
     pipeline {
         agent { 
@@ -39,7 +36,6 @@ def call (Map pipelineParams) {
                     }
                 }
             }
-
         }
     }
 }
