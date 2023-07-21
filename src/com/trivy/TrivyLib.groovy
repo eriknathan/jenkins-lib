@@ -6,6 +6,6 @@ class TrivyLib {
 
     def trivyScanning(Map params){
         ("echo Realizando o Sacanning da Imagem: ${params.DockerImage};" +
-         "trivy image ${params.DockerImage}; echo Exit Code: ${$?}")
+         "trivy image ${params.DockerImage}; echo Exit Code: $?")
     }
 }
