@@ -22,7 +22,7 @@ def call (Map pipelineParams) {
 						// httpLib.performHealthCheck(ServiceName: pipelineParams.serviceName,
 						// 				   		   ServiceURL: pipelineParams.serviceURL)
 						def serviceName = 'Google' // Substitua pelo nome do serviço que você deseja verificar
-						def serviceURL = 'www.google.com' // Substitua pela URL do serviço
+						def serviceURL = 'google.com' // Substitua pela URL do serviço
 						
 						def response = httpRequest(
 							url: serviceURL,
