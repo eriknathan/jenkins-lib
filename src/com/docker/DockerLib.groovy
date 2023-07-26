@@ -20,14 +20,6 @@ class DockerLib {
          "docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d")
     }
 
-    def imgRunPhaseBasic(Map params){
-        ("echo DOCKER_IMAGE=${params.DockerImage} >> .env;" +
-         "echo CONTAINER_NAME=${params.ProjectName}-${params.BranchName} >> .env;" +
-        
-         "docker image pull ${params.DockerImage};" +
-         "docker-compose -f docker-compose.yml -p ${params.ProjectName}-${params.BranchName} up -d")
-    }
-
     def imgPullPhase(Map params){
        "docker image pull ${params.DockerImage}"
     }
