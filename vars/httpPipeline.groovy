@@ -5,6 +5,7 @@ def call (Map pipelineParams) {
     def httpLib = new com.http.HttpLib()
 
     pipelineParams.service = "Google"
+    pipelineParams.serviceURL = "www.google.com"
     
     pipeline {
         agent { 
@@ -14,12 +15,10 @@ def call (Map pipelineParams) {
         stages {
             stage('Trivy Scanning') {
                 steps {
-					script {
-						def serviceName = 'Google'
-						def serviceURL = 'www.google.com'
-						
+					script {						
 						// Chamando a função de health check
-						performHealthCheck(serviceName, serviceURL)
+						httpLib.performHealthCheck(ServiceName: pipelineParams.service,
+										   		  ServiceUrl: pipelineParams.serviceURL)
 					}
 				}
             }

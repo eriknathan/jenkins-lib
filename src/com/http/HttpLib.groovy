@@ -3,17 +3,17 @@
 package com.http
 
 class HttpLib {
-	def performHealthCheck(String serviceName, String serviceURL) {
+	def performHealthCheck(Map params) {
 		def response = httpRequest(
-			url: serviceURL,
+			url: ${params.serviceURL},
 			validResponseCodes: '200',
 			validResponseContent: serviceName
 		)
 
 		if (response.status == 200) {
-			echo "O serviço ${serviceName} está funcionando corretamente."
+			echo "O serviço ${Map params.serviceName} está funcionando corretamente."
 		} else {
-			error "O serviço ${serviceName} está com problemas. Código de resposta: ${response.status}"
+			error "O serviço ${Map params.serviceName} está com problemas. Código de resposta: ${response.status}"
 		}
 	}
 }
