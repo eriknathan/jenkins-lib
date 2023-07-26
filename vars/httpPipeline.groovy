@@ -3,8 +3,7 @@
 def call (Map pipelineParams) {
     
     def httpLib = new com.http.HttpLib()
-
-    pipelineParams.service = "Google"
+	
     pipelineParams.serviceURL = "www.google.com"
     
     pipeline {
@@ -20,7 +19,7 @@ def call (Map pipelineParams) {
                         echo " HEALTH CHECK"
                         echo " --------------------------------------------------------------------------------------- "					
 						// Chamando a função de health check
-						httpLib.performHealthCheck(ServiceName: pipelineParams.service,
+						httpLib.performHealthCheck(ServiceName: pipelineParams.serviceName,
 										   		  ServiceURL: pipelineParams.serviceURL)
 					}
 				}
