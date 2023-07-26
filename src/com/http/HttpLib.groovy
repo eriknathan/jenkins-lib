@@ -3,6 +3,7 @@
 package com.http
 
 class HttpLib {
+	
 	def performHealthCheck(Map params) {
 		def response = httpRequest(
 			url: ${params.serviceURL},

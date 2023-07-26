@@ -13,7 +13,7 @@ def call (Map pipelineParams) {
         }
 
         stages {
-            stage('Trivy Scanning') {
+            stage('Helth Check') {
                 steps {
 					script {	
 						echo " --------------------------------------------------------------------------------------- "
@@ -21,7 +21,7 @@ def call (Map pipelineParams) {
                         echo " --------------------------------------------------------------------------------------- "					
 						// Chamando a função de health check
 						httpLib.performHealthCheck(ServiceName: pipelineParams.service,
-										   		  ServiceUrl: pipelineParams.serviceURL)
+										   		  ServiceURL: pipelineParams.serviceURL)
 					}
 				}
             }
