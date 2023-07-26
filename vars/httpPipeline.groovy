@@ -4,7 +4,7 @@ def call (Map pipelineParams) {
     
     def httpLib = new com.http.HttpLib()
 
-    pipelineParams.dockerImage = "cybersec-api:latest"
+    pipelineParams.service = "Google"
     
     pipeline {
         agent { 
@@ -14,14 +14,14 @@ def call (Map pipelineParams) {
         stages {
             stage('Trivy Scanning') {
                 steps {
-                script {
-                    def serviceName = 'Google'
-                    def serviceURL = 'www.google.com'
-                    
-                    // Chamando a função de health check
-                    performHealthCheck(serviceName, serviceURL)
-                }
-            }
+					script {
+						def serviceName = 'Google'
+						def serviceURL = 'www.google.com'
+						
+						// Chamando a função de health check
+						performHealthCheck(serviceName, serviceURL)
+					}
+				}
             }
         }
     }
