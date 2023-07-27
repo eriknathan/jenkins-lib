@@ -5,7 +5,7 @@ package com.http
 class HttpLib {
 	def performHealthCheck(Map params) {
 		// Exibe o corpo da resposta HTTP
-		("echo DETALHES DA REQUISIÇÃO HTTP AO SERVIÇO: ${params.serviceName};" +
+		("echo DETALHES DA REQUISIÇÃO HTTP AO SERVIÇO: ${params.ServiceName};" +
          "curl ${params.Url} -I")
 		
 		//if (response.status == 200) {
