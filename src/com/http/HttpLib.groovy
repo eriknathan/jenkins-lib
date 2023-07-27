@@ -8,10 +8,10 @@ class HttpLib {
 		"echo DETALHES DA REQUISIÇÃO HTTP AO SERVIÇO: ${params.serviceName}"
 		"curl ${params.Url} -I"
 		
-		if (response.status == 200) {
-			"echo O serviço ${params.serviceName} está funcionando corretamente."
-		} else {
-			"error O serviço ${params.serviceName} está com problemas. Código de resposta: ${response.status}"
-		}
+		//if (response.status == 200) {
+		//	"echo O serviço ${params.serviceName} está funcionando corretamente."
+		//} else {
+		//	"error O serviço ${params.serviceName} está com problemas. Código de resposta: ${response.status}"
+		//}
 	}
 }
