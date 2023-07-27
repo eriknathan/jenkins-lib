@@ -26,6 +26,16 @@ def call (Map pipelineParams) {
 					}
 				}
             }
+			stage('Teste Script SH') {
+				steps {
+					// Exemplo de execução de um script em shell
+					sh '''
+						echo "Iniciando a execução do script em shell..."
+						ls -la
+						echo "Fim da execução do script em shell."
+					'''
+				}
+			}
         }
     }
 }
