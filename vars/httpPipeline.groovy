@@ -4,7 +4,8 @@ def call (Map pipelineParams) {
     
     def httpLib = new com.http.HttpLib()
 
-    pipelineParams.serviceURL = "www.google.com"
+    pipelineParams.serviceURL = "https://dev.frevo.isitics.com/"
+    pipelineParams.serviceName = "Dev - Frevo - FE"
     
     pipeline {
         agent { 
@@ -19,7 +20,8 @@ def call (Map pipelineParams) {
                         echo " HEALTH CHECK"
                         echo " --------------------------------------------------------------------------------------- "									
 
-						sh httpLib.performHealthCheck()
+						sh httpLib.performHealthCheck(Url: pipelineParams.serviceURL,
+                                                   	  ServiceName: pipelineParams.serviceName)
 					}
 				}
             }
