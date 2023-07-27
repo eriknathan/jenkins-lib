@@ -15,20 +15,21 @@ def call (Map pipelineParams) {
             stage('Helth Check') {
                 steps {
 					script {	
-						// echo " --------------------------------------------------------------------------------------- "
-                        // echo " HEALTH CHECK"
-                        // echo " --------------------------------------------------------------------------------------- "					
+						echo " --------------------------------------------------------------------------------------- "
+                        echo " HEALTH CHECK"
+                        echo " --------------------------------------------------------------------------------------- "					
 						// // Chamando a função de health check
 						// httpLib.performHealthCheck(ServiceName: pipelineParams.serviceName,
-						// 				   		   ServiceURL: pipelineParams.serviceURL)
+						// ServiceURL: pipelineParams.serviceURL)
 						def serviceName = 'Google' // Substitua pelo nome do serviço que você deseja verificar
 						def serviceURL = 'google.com' // Substitua pela URL do serviço
 						
-						def response = httpRequest(
-							url: serviceURL,
-							validResponseCodes: '200', // Códigos de resposta válidos que indicam que o serviço está funcionando
-							validResponseContent: serviceName // Conteúdo esperado na resposta para verificar se é o serviço correto
-						)
+						def response = httpRequest 'https://google.com'
+						//def response = httpRequest(
+						//	url: serviceURL,
+						//	validResponseCodes: '200', // Códigos de resposta válidos que indicam que o serviço está funcionando
+						//	validResponseContent: serviceName // Conteúdo esperado na resposta para verificar se é o serviço correto
+						//)
 						
 						if (response.status == 200) {
 							echo "O serviço ${serviceName} está funcionando corretamente."
