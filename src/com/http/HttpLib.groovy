@@ -5,7 +5,7 @@ package com.http
 class HttpLib {
 
 	def performHealthCheck(Map params) {
-		response = httpRequest(url: "${params.Url}", httpMode: 'GET')
+		response = httpRequest "${params.Url}"
 
 		// Exibe o status da resposta HTTP
 		"echo Status da resposta: ${response.status}"
