@@ -5,9 +5,9 @@ package com.http
 class HttpLib {
 
 	def performHealthCheck(Map params) {
-		def serviceName = "Dev - Frevo - FE"
-		def url = 'https://dev.frevo.isitics.com/' 
-		def response = httpRequest(url: url, httpMode: 'GET')
+		serviceName = "Dev - Frevo - FE"
+		url = 'https://dev.frevo.isitics.com/' 
+		response = httpRequest(url: url, httpMode: 'GET')
 
 		// Exibe o status da resposta HTTP
 		echo "Status da resposta: ${response.status}"
