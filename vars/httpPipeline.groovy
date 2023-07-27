@@ -19,7 +19,8 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
                         echo " HEALTH CHECK"
                         echo " --------------------------------------------------------------------------------------- "									
-
+						
+						response = httpRequest "${pipelineParams.serviceURL}"
 						sh httpLib.performHealthCheck(Url: pipelineParams.serviceURL,
                                                    	  ServiceName: pipelineParams.serviceName)
 					}
