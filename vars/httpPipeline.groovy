@@ -17,18 +17,9 @@ def call (Map pipelineParams) {
 					script {	
 						echo " --------------------------------------------------------------------------------------- "
                         echo " HEALTH CHECK"
-                        echo " --------------------------------------------------------------------------------------- "					
+                        echo " --------------------------------------------------------------------------------------- "									
 
-						def serviceName = 'YouTube' 
-						def serviceURL = 'https://www.isitics.com/' 
-						
-						def response = httpRequest "${serviceURL}"
-						
-						if (response.status == 200) {
-							echo "O serviço ${serviceName} está funcionando corretamente."
-						} else {
-							error "O serviço ${serviceName} está com problemas. Código de resposta: ${response.status}"
-						}
+						sh httpLib.performHealthCheck()
 					}
 				}
             }
