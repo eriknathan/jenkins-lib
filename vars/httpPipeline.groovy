@@ -30,9 +30,10 @@ def call (Map pipelineParams) {
 				steps {
 					// Exemplo de execução de um script em shell
 					sh '''
-						echo "Iniciando a execução do script em shell..."
-						ls -la
-						echo "Fim da execução do script em shell."
+						NOME="Erik"
+						NOME_2="Erik"
+
+						[ "$NOME" = "$NOME_2" ] && echo "Nomes são Iguais!"
 					'''
 				}
 			}
