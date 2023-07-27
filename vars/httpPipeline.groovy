@@ -20,7 +20,7 @@ def call (Map pipelineParams) {
                         echo " --------------------------------------------------------------------------------------- "					
 
 						def serviceName = 'YouTube' 
-						def serviceURL = 'https://www.youtube.com/' 
+						def serviceURL = 'https://www.isitics.com/' 
 						
 						def response = httpRequest "${serviceURL}"
 						
@@ -28,6 +28,7 @@ def call (Map pipelineParams) {
 							echo "O serviço ${serviceName} está funcionando corretamente."
 						} else {
 							error "O serviço ${serviceName} está com problemas. Código de resposta: ${response.status}"
+							echo "curl ${serviceURL} -I"
 						}
 					}
 				}
