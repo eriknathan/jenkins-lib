@@ -6,12 +6,10 @@ class ScriptLib {
 
     def scritpsSh(){
 		'''
-			function soma () {
-				local result=$(($1+$2))
-				echo $result
-			}
+			NOME="Erik"
+			NOME_2="Erik"
 
-			soma 15 15
+			[ "$NOME" = "$NOME_2" ] && echo "Nomes são Iguais!"
 		'''
     }
 }
