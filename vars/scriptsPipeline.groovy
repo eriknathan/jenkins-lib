@@ -8,11 +8,16 @@ def call (Map pipelineParams) {
         }
 
 		stages {
-			stage('Meu Stage') {
-				steps {
-					sh 'sudo /home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh'
-				}
-			}
+			stage('Teste SH') {
+                steps {
+                    script {
+                        echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O TESTE DO SCRIPT SH "
+						echo " --------------------------------------------------------------------------------------- "
+
+                        sh "sudo /home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh"
+                }
+            }
 		}
     }
 }
