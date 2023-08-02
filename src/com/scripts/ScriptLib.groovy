@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-package com.scrits
+package com.scripts
 
 class ScriptLib {
 
-    def scritpsSh(Map params){
+    def scritpsSh(){
 		'''
 			function soma () {
 				local result=$(($1+$2))
