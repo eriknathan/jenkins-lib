@@ -16,8 +16,9 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
 
                         sh "sudo /home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh"
-                }
-            }
+					}
+				}
+			}
 		}
-    }
+	}
 }
