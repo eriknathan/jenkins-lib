@@ -14,9 +14,15 @@ def call (Map pipelineParams) {
                         echo " --------------------------------------------------------------------------------------- "
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
-
-                        sh 'src/com/scripts/segredo.sh'
 					}
+					sh ''' 
+						function soma () {
+							local result=$(($1+$2))
+							echo $result
+						}
+
+						soma 15 15
+					'''
 				}
 			}
 		}
