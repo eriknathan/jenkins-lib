@@ -1,3 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo "Fazendo a chamada do Script SH!"
+function soma () {
+	local result=$(($1+$2))
+	echo $result
+}
+
+soma 15 15
