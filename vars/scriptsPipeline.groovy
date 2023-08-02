@@ -15,7 +15,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 
-                        sh "sudo /home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh"
+                        sh 'src/com/scripts/segredo.sh'
 					}
 				}
 			}
