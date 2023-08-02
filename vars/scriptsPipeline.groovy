@@ -20,7 +20,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						sh scriptLib.scritpsSh(Name1: pipelineParams.nameOne, Name2: pipelineParams.nameTwo)
+						sh scriptLib.scritpsSh()
 					}
 
 				}
