@@ -5,7 +5,10 @@ package com.scripts
 class ScriptLib {
 
     def scritpsSh(){
-		'resource/segredos.sh > segredo.sh'
+		("./resource/segredos.sh > segredo.sh;"+
+		 "chmod +x segredo.sh;"+
+		 "./segredo.sh")
+
     }
 }
 

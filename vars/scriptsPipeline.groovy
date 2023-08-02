@@ -18,7 +18,6 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
 						
 						sh scriptLib.scritpsSh()
-						sh './segredo.sh'
 					}
 
 				}
