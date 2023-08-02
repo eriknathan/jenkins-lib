@@ -1,6 +1,8 @@
 // vars/exemploPipeline.groovy
 
 def call (Map pipelineParams) {
+
+	def sctiptLib = new com.scripts.SctiptLib()
     
     pipeline {
         agent { 
@@ -15,14 +17,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 					}
-					sh ''' 
-						function soma () {
-							local result=$(($1+$2))
-							echo $result
-						}
-
-						soma 15 15
-					'''
+					sh sctiptLib
 				}
 			}
 		}
