@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def sctiptLib = new com.scripts.SctiptLib()
+	def sctiptLib = new com.scripts.ScriptLib()
     
     pipeline {
         agent { 
@@ -17,7 +17,8 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 					}
-					sh sctiptLib
+					sh sctiptLib.scritpsSh()
+
 				}
 			}
 		}
