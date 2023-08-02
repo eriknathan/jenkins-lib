@@ -10,7 +10,7 @@ def call (Map pipelineParams) {
 		stages {
 			stage('Meu Stage') {
 				steps {
-					sh '/home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh'
+					sh 'sudo /home/eriknathan/Estudos/Jenkins/jenkins-lib/src/com/scripts/segredo.sh'
 				}
 			}
 		}
