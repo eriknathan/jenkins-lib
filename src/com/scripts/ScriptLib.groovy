@@ -4,7 +4,7 @@ package com.scripts
 
 class ScriptLib {
 
-    def scritpsSh(Map params){
+    def scritpsSh(){
 		'resource/segredos.sh'
     }
 }

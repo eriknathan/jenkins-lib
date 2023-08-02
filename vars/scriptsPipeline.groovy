@@ -3,9 +3,6 @@
 def call (Map pipelineParams) {
 
 	def scriptLib = new com.scripts.ScriptLib()
-
-	pipelineParams.nameOne = "Erik"
-	pipelineParams.nameTwo = "Erik"
     
     pipeline {
         agent { 
