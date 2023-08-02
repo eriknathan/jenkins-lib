@@ -4,10 +4,10 @@ package com.scripts
 
 class ScriptLib {
 
-    def scritpsSh(){
+    def scritpsSh(Map params){
 		'''
-			NOME="Erik"
-			NOME_2="Erik"
+			NOME="${params.Name1} "
+			NOME_2="${params.Name2} "
 
 			[ "$NOME" = "$NOME_2" ] && echo "Nomes são Iguais!"
 		'''
