@@ -2,6 +2,8 @@
 
 def call (Map pipelineParams) {
 
+	def scriptbash = libraryResource 'com/scripts/segredos.sh'
+
     pipeline {
         agent { 
             label 'ubuntu'
@@ -12,7 +14,6 @@ def call (Map pipelineParams) {
 			stage('ExecShellScritp') {
                 steps {
                         
-            		def scriptbash = libraryResource 'com/scripts'
 
 					script {
 						echo " --------------------------------------------------------------------------------------- "
