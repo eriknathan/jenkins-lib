@@ -4,6 +4,9 @@ def call (Map pipelineParams) {
     
 	def my_script = com.scripts.ScriptLib
 
+	pipelineParams.ipTeste = "192.168.1.1"
+	pipelineParams.nameTeste = "scriptargumentvalue"
+
     pipeline {
         agent { 
             label 'ubuntu'
@@ -21,8 +24,8 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						my_script.my_function(Serverip: "192.168.1.1",
-											 Scriptargument: "scriptargumentvalue")
+						my_script.my_function(Serverip: pipelineParams.ipTeste,
+											 Scriptargument: pipelineParams.nameTeste)
 					}
 				}
 			}
