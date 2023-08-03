@@ -21,7 +21,8 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						my_script.my_function("192.168.1.1", "scriptargumentvalue")
+						my_script.my_function(serverip: "192.168.1.1",
+											 scriptargument: "scriptargumentvalue")
 					}
 				}
 			}
