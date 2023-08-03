@@ -21,7 +21,11 @@ def call (Map pipelineParams) {
 						
 						def scriptbash = libraryResource 'com/scripts/segredos.sh'
 						writeFile file: './segredos.sh', text: scriptbash
-						sh 'bash ./segredos.sh Erik 21 Masculino'
+						sh 'bash ./segredos.sh Erik 21 Masc'
+
+						def scriptbash = libraryResource 'com/scripts/teste.py'
+						writeFile file: './teste.py', text: scriptbash
+						sh 'python3 ./teste.py Erik'
 					}
 				}
 			}
