@@ -9,14 +9,18 @@ def call (Map pipelineParams) {
 
 		stages {
 			
-			stage('Teste SH') {
+			stage('ExecShellScritp') {
                 steps {
-                    script {
-                        echo " --------------------------------------------------------------------------------------- "
+                        
+            		def scriptbash = libraryResource 'com/scripts'
+
+					script {
+						echo " --------------------------------------------------------------------------------------- "
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
+
+						sh script: scriptbash, label: 'ExecShellScritp'
 					}
-            		def scriptbash = libraryResource 'resource/com/scripts'
 				}
 			}
 		}
