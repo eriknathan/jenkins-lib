@@ -16,7 +16,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 					}
-            		def script_bash = libraryResource 'com/example/loadtestscript'
+            		def script_bash = libraryResource 'resource/com/scripts'
 				}
 			}
 		}
