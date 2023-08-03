@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello $1. Today is $2."
+echo "Hello meu amigo: $1. Hoje é $2, tenha um dia!."
