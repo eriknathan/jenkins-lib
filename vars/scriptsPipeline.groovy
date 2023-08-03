@@ -19,6 +19,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
+						def scriptbash = libraryResource 'com/scripts/'
 						sh scriptLib.testScript(Script:"segredos", Nome:"Erik", Day:"Quinta")
 					}
 				}
