@@ -11,11 +11,6 @@ def call (Map pipelineParams) {
 			
 			stage('Teste SH') {
                 steps {
-                    script {
-                        echo " --------------------------------------------------------------------------------------- "
-						echo " INICIANDO O TESTE DO SCRIPT SH "
-						echo " --------------------------------------------------------------------------------------- "
-					}
 					// def script_bash = libraryResource 'resource/scripts/segredos.sh'
 					// writeFile file: './segredos.sh', text: script_bash
 					// sh 'bash ./segredos.sh'
@@ -30,7 +25,13 @@ def call (Map pipelineParams) {
 						sh(sshcommand)
 					}
 
-					my_script.my_function("192.168.1.1", "scriptargumentvalue")
+                    script {
+                        echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O TESTE DO SCRIPT SH "
+						echo " --------------------------------------------------------------------------------------- "
+						
+						my_script.my_function("192.168.1.1", "scriptargumentvalue")
+					}
 				}
 			}
 		}
