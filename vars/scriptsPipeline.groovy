@@ -15,7 +15,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						def segredosScript = libraryResource('resource/segredos.sh')
+						def segredosScript = libraryResource('segredos.sh')
             			sh "bash ${segredosScript}" 
 					}
 
