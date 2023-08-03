@@ -19,7 +19,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						sh scriptLib.testScript(Nome:"Erik", Day:"Quinta")
+						sh scriptLib.testScript(Script:"segredos", Nome:"Erik", Day:"Quinta")
 					}
 				}
 			}

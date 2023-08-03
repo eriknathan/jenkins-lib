@@ -9,7 +9,7 @@ class ScriptLib {
 
 		writeFile file: './segredos.sh', text: scriptbash
 
-		"bash ./segredos.sh ${params.Nome} ${params.Day}"
+		"bash ./${params.Script}.sh ${params.Nome} ${params.Day}"
 	}
 }
 
