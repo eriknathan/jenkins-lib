@@ -8,6 +8,14 @@ def call (Map pipelineParams) {
         }
 
 		stages {
+			stage('Listar conteúdo da biblioteca compartilhada') {
+				steps {
+					script {
+						sh "ls -R ${libraryResource('.')}"
+					}
+				}
+			}
+
 			stage('Teste SH') {
                 steps {
                     script {
