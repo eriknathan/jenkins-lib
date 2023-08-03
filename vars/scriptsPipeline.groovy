@@ -16,17 +16,12 @@ def call (Map pipelineParams) {
 				}
 			}
 
-			stage('Teste SH') {
-                steps {
-                    script {
-                        echo " --------------------------------------------------------------------------------------- "
-						echo " INICIANDO O TESTE DO SCRIPT SH "
-						echo " --------------------------------------------------------------------------------------- "
-						
-						def segredosScript = libraryResource('segredos.sh')
-            			sh "bash ${segredosScript}" 
+			stage('Executar script de segredos') {
+				steps {
+					script {
+						def segredosScript = libraryResource('resources/segredos.sh')
+						sh "bash ${segredosScript}"
 					}
-
 				}
 			}
 		}
