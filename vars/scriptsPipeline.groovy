@@ -25,13 +25,13 @@ def call (Map pipelineParams) {
 						writeFile file: './segredos.sh', text: scriptbash
 						sh 'bash ./segredos.sh Erik 21 Masc'
 
-						sh cleanLib.cleanfile(File:"segredos.sh")
+						sh cleanLib.cleanfile(File: "segredos.sh")
 
 						def scriptpython = libraryResource 'com/scripts/teste.py'
 						writeFile file: './teste.py', text: scriptpython
 						sh 'python3 ./teste.py Erik'
 						
-						sh cleanLib.cleanfile(File:"teste.py")
+						sh cleanLib.cleanfile(File: "teste.py")
 					}
 				}
 			}
