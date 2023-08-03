@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def scriptLib = new com.script.ScriptLib()
+	def scriptLib = new com.scripts.ScriptLib()
 
     pipeline {
         agent { 
@@ -11,7 +11,7 @@ def call (Map pipelineParams) {
 
 		stages {
 			
-			stage('ExecShellScritp') {
+			stage('TesteShell') {
                 steps {
                         
 					script {
@@ -19,7 +19,6 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						def scriptbash = libraryResource 'com/scripts/'
 						sh scriptLib.testScript(Script:"segredos", Nome:"Erik", Day:"Quinta")
 					}
 				}
