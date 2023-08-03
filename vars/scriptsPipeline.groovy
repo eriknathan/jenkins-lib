@@ -30,9 +30,9 @@ def call (Map pipelineParams) {
 
 						sh cleanLib.cleanFiles(File: pipelineParams.scriptShell)
 
-						def scriptpython = libraryResource "com/scripts/${pipelineParams.scriptShell}"
+						def scriptpython = libraryResource "com/scripts/${pipelineParams.scriptPython}"
 						writeFile file: "./${pipelineParams.scriptPython}", text: scriptpython
-						sh "python3 ./${pipelineParams.scriptShell} Erik"
+						sh "python3 ./${pipelineParams.scriptPython} Erik"
 						
 						sh cleanLib.cleanFiles(File: pipelineParams.scriptPython)
 					}
