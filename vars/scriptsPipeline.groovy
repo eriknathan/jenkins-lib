@@ -1,8 +1,6 @@
 // vars/exemploPipeline.groovy
 
 def call (Map pipelineParams) {
-
-	def scriptLib = new com.scripts.ScriptLib()
     
     pipeline {
         agent { 
@@ -17,7 +15,8 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						sh scriptLib.scritpsSh()
+						def segredosScript = libraryResource('resource/segredos.sh')
+            			sh "bash ${segredosScript}" 
 					}
 
 				}
