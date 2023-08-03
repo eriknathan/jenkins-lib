@@ -2,8 +2,6 @@
 
 def call (Map pipelineParams) {
 
-	def scriptbash = libraryResource 'com/scripts/segredos.sh'
-
     pipeline {
         agent { 
             label 'ubuntu'
@@ -19,6 +17,8 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
+						def scriptbash = libraryResource 'com/scripts/segredos.sh'
+
 						writeFile file: './segredos.sh', text: scriptbash
 
 						sh 'bash ./segredos.sh'
