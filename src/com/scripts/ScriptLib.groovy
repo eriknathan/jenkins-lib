@@ -9,7 +9,7 @@ class ScriptLib {
 		// create a file with script_bash content
 		writefile file: './test.sh', text: script_content
 		echo "execute remote script test.sh..."
-		def sshcommand = "echo ip ${params.serverip} and name ${params.scriptargument}"
+		def sshcommand = "echo ip ${params.Serverip} and name ${params.Scriptargument}"
 		echo "ssh command is: ${sshcommand}"
 		sh(sshcommand)
 	}
