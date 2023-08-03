@@ -8,19 +8,17 @@ def call (Map pipelineParams) {
         }
 
 		stages {
-			stage('Listar conteúdo da biblioteca compartilhada') {
-				steps {
-					script {
-						sh "ls -R ${libraryResource('.')}"
-					}
-				}
-			}
-
-			stage('Executar script de segredos') {
-				steps {
-					script {
-						def segredosScript = libraryResource('resources/segredos.sh')
-						sh "bash ${segredosScript}"
+			
+			stage('Teste SH') {
+                steps {
+                    script {
+                        echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O TESTE DO SCRIPT SH "
+						echo " --------------------------------------------------------------------------------------- "
+						
+						def script_bash = libraryResource 'resource/scripts/segredos.sh'
+						writeFile file: './test.sh', text: script_bash
+            			sh 'bash ./test.sh'
 					}
 				}
 			}
