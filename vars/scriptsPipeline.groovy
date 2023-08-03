@@ -16,9 +16,9 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT SH "
 						echo " --------------------------------------------------------------------------------------- "
 						
-						def script_bash = libraryResource 'resource/scripts/segredos.sh'
-						writeFile file: './test.sh', text: script_bash
-            			sh 'bash ./test.sh'
+						def script_bash = libraryResource 'resource/scripts/'
+						writeFile file: './segredos.sh', text: script_bash
+            			sh 'bash ./segredos.sh'
 					}
 				}
 			}
