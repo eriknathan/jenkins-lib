@@ -1,4 +1,2 @@
 #!/bin/bash
-
-echo "Hello World"
-echo "Testando Script"
+echo "Hello $1. Today is $2."
