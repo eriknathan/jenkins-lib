@@ -4,14 +4,12 @@ package com.scripts
 
 class ScriptLib {
 
-    def my_function(Map params) {
-		def script_content = libraryresource 'my_scripts/test.sh'
-		// create a file with script_bash content
-		writefile file: './test.sh', text: script_content
-		echo "execute remote script test.sh..."
-		def sshcommand = "echo ip ${params.Serverip} and name ${params.Scriptargument}"
-		echo "ssh command is: ${sshcommand}"
-		sh(sshcommand)
+    def testScript(Map params) {
+		def scriptbash = libraryResource 'com/scripts/'
+
+		writeFile file: './segredos.sh', text: scriptbash
+
+		"bash ./segredos.sh ${params.Nome} ${params.Day}"
 	}
 }
 
