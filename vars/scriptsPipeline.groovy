@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def scriptbash = libraryResource 'com/scripts/'
+	def scriptbash = libraryResource 'com/scripts/segredos.sh'
 
     pipeline {
         agent { 
