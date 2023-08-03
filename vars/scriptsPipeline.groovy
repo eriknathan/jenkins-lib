@@ -21,7 +21,7 @@ def call (Map pipelineParams) {
 
 						writeFile file: './segredos.sh', text: scriptbash
 
-						sh 'bash ./segredos.sh'
+						sh 'bash ./segredos.sh Erik Quinta'
 					}
 				}
 			}
