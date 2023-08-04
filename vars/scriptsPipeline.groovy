@@ -99,10 +99,7 @@ def call (Map pipelineParams) {
 						
 						if (fileId) {
 							echo "File ID for develop in santacruz-fe: ${fileId}"
-							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
-							// Realize as ações desejadas com o valor do File ID aqui
-						} else {
-							echo "No develop environment found in santacruz-fe."
+							configFileProvider([configFile(fileId: "${fileId}", targetLocation: '.env')]) {}
 						}
 					}
 				}
