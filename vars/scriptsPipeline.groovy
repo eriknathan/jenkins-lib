@@ -55,11 +55,10 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
 
 						def scriptjson = libraryResource 'com/scripts/request.json'
-						//def configFileMap = readJSON file: scriptjson
 
 						def jsonData = readJSON text: scriptjson
-						echo "${jsonData}"
-						echo "Valor da chave 'campo': ${jsonData.cybersec-storybook}"
+						echo "${jsonData} | jq"
+						//echo "Valor da chave 'campo': ${jsonData.cybersec-storybook}"
 						// Aqui você pode adicionar mais lógica para processar os dados do JSON
 
 						// Selecione o pipeline específico
