@@ -68,37 +68,34 @@ def call (Map pipelineParams) {
                         	echo "Idade: ${person.idade}"
 						}
 					}
-					discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/1137143123005419753/Zn7xM6QAv2aS3pk7pUK1QMCmHTLDRCIInUjnniZameDDa4SuuMy49zrfMqr8Lua-o8yK"
-				}
-			}
-			
-			stage('Read JSON') {
-				steps {
-					script {
-						def jsonData = readJSON(file: 'com/json/projectsFilesList.json')
-						env.CYBERSEC_JSON = jsonData.cybersec
-					}
+					//discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/1137143123005419753/Zn7xM6QAv2aS3pk7pUK1QMCmHTLDRCIInUjnniZameDDa4SuuMy49zrfMqr8Lua-o8yK"
 				}
 			}
 
 			stage('Use JSON Values') {
 				steps {
 					script {
-						def projects = env.CYBERSEC_JSON
-						
+						def envjson = libraryResource 'com/json/projectsFilesList.json'
+						def json = readJSON text: envjson
+						def projects = json.cybersec
+						echo "JSON: ${projects}"
+
 						projects.each { projectKey, project ->
 							echo "Project: ${projectKey}"
 							
 							project.develop.each { entry ->
 								echo "  Develop - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+								// Realize as ações desejadas com os valores do JSON aqui
 							}
 							
 							project.qa.each { entry ->
 								echo "  QA - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+								// Realize as ações desejadas com os valores do JSON aqui
 							}
 							
 							project.homolog.each { entry ->
 								echo "  Homolog - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+								// Realize as ações desejadas com os valores do JSON aqui
 							}
 						}
 					}
