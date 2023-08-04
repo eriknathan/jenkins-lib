@@ -3,7 +3,8 @@
 def call (Map pipelineParams) {
 
 	def cleanLib = new com.functions.CleanLib()
-	def projectBaseName = "cybersec-storybook"
+	def projectBaseName = "santacruz-fe"
+	def branchName = "develop"
 
     pipeline {
         agent { 
@@ -59,22 +60,21 @@ def call (Map pipelineParams) {
 						def jsonData = readJSON text: scriptjson
 						echo "JSON: ${jsonData}"
 
-						//assert jsonData['nome'] == 'Erik'
-						//echo "Nome: ${jsonData.nome}"
-						//echo "Idade: ${jsonData.idade}"
-
 						jsonData.pessoas.each { person ->
                         	echo "Nome: ${person.nome}"
                         	echo "Idade: ${person.idade}"
 						}
 					}
-					//discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/1137143123005419753/Zn7xM6QAv2aS3pk7pUK1QMCmHTLDRCIInUjnniZameDDa4SuuMy49zrfMqr8Lua-o8yK"
 				}
 			}
 
-			stage('Use JSON Values') {
+			stage('JSON Managed Files') {
 				steps {
 					script {
+						echo " --------------------------------------------------------------------------------------- "
+						echo " JSON MANAGED FILES "
+						echo " --------------------------------------------------------------------------------------- "
+
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
 						def projects = json.santacruz
@@ -85,7 +85,7 @@ def call (Map pipelineParams) {
 							
 							projectEnvironments.each { environment ->
 								environment.each { envKey, fileId ->
-									echo "  Environment: ${envKey}, File ID: ${fileId}"
+									echo "Branch: ${envKey} - ID: ${fileId}"
 									// Realize as ações desejadas com os valores do JSON aqui
 								}
 							}
