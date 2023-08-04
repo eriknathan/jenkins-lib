@@ -85,7 +85,7 @@ def call (Map pipelineParams) {
 							
 							project.develop.each { entry ->
 								echo "  Develop - File ID: ${entry.fileId}"
-\							}
+							}
 							
 							project.qa.each { entry ->
 								echo "  QA - File ID: ${entry.fileId}"
