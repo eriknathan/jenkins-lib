@@ -94,8 +94,12 @@ def call (Map pipelineParams) {
 								// Realize as ações desejadas com os valores do JSON aqui
 						//	}
 						//}
-						def santacruzFeDevelop = json.santacruz."santacruz-fe".find { environment -> environment.containsKey("develop") }
-						def fileId = santacruzFeDevelop?.develop
+						//def santacruzFeDevelop = json.santacruz."santacruz-fe".find { environment -> environment.containsKey("develop") }
+						//def fileId = santacruzFeDevelop?.develop
+
+						def fileId = json.santacruz."santacruz-fe".findResult { environment ->
+                        environment.containsKey("develop") ? environment.develop : null
+                    }
 						
 						if (fileId) {
 							echo "File ID for develop in santacruz-fe: ${fileId}"
