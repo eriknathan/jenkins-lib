@@ -78,7 +78,7 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def projectEnvironments = json.santacruz."${pipelineParams.projectBaseName}"
+						def projectEnvironments = json.santacruz."santacruz-fe"
 						echo "JSON: ${projects}"
 
 						//projects.each { projectKey, projectEnvironments ->
