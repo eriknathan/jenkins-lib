@@ -59,7 +59,7 @@ def call (Map pipelineParams) {
 
 						def jsonData = readJSON text: scriptjson
 						echo "${jsonData}"
-						//echo "Valor da chave 'campo': ${jsonData.cybersec-storybook}"
+						echo "Valor da chave 'campo': ${jsonData.cybersec-storybook}"
 						// Aqui você pode adicionar mais lógica para processar os dados do JSON
 
 						// Selecione o pipeline específico
