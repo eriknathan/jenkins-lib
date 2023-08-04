@@ -54,7 +54,7 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT JSON "
 						echo " --------------------------------------------------------------------------------------- "
 
-						def scriptjson = libraryResource 'com/scripts/request.json'
+						def scriptjson = libraryResource 'com/json/projectsFilesList.json'
 
 						def jsonData = readJSON text: scriptjson
 						echo "JSON: ${jsonData}"
@@ -69,6 +69,34 @@ def call (Map pipelineParams) {
 						}
 					}
 					discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/1137143123005419753/Zn7xM6QAv2aS3pk7pUK1QMCmHTLDRCIInUjnniZameDDa4SuuMy49zrfMqr8Lua-o8yK"
+				}
+			}
+
+			stage('Use JSON Values') {
+				steps {
+					script {
+
+						def envjson = libraryResource 'com/json/projectsFilesList.json'
+						
+						env.CYBERSEC_JSON = envjson.cybersec
+						def projects = env.CYBERSEC_JSON
+
+						projects.each { projectKey, project ->
+							echo "Project: ${projectKey}"
+							
+							project.develop.each { entry ->
+								echo "  Develop - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+							}
+							
+							project.qa.each { entry ->
+								echo "  QA - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+							}
+							
+							project.homolog.each { entry ->
+								echo "  Homolog - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
+							}
+						}
+					}
 				}
 			}
 		}
