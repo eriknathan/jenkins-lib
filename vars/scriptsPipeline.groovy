@@ -54,20 +54,23 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT JSON "
 						echo " --------------------------------------------------------------------------------------- "
 
-						def scriptjson = libraryResource 'com/scripts/request.json'
-						def configFileMap = readJSON file: scriptjson
+						//def scriptjson = libraryResource 'com/scripts/request.json'
+						//def configFileMap = readJSON file: scriptjson
 
-						echo "${configFileMap}"
+						def jsonData = readJSON(file: 'com/scripts/request.json')
+						echo "${jsonData}"
+						echo "Valor da chave 'campo' no JSON: ${jsonData.cybersec-storybook}"
+						// Aqui você pode adicionar mais lógica para processar os dados do JSON
 
 						// Selecione o pipeline específico
-						def pipelineName = 'cybersecPipeline'
-						def pipelineConfig = configFileMap[pipelineName]
+						//def pipelineName = 'cybersecPipeline'
+						//def pipelineConfig = configFileMap[pipelineName]
 
-						echo "Expondo Json: ${pipelineConfig}"
+						//echo "Expondo Json: ${pipelineConfig}"
 
-						if(pipelineConfig != null) {
-							copyFiles(ProjectName: projectBaseName, pipelineConfig)
-						}						
+						//if(pipelineConfig != null) {
+						//	copyFiles(ProjectName: projectBaseName, pipelineConfig)
+						//}						
 					}
 				}
 			}
