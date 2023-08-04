@@ -80,20 +80,16 @@ def call (Map pipelineParams) {
 						def projects = json.santacruz
 						echo "JSON: ${projects}"
 
-						projects.each { projectKey, project ->
+						projects.each { projectKey, projectEnvironments ->
 							echo "Project: ${projectKey}"
 							
-							project.develop.each { entry ->
-								echo "  Develop - File ID: ${entry.fileId}"
+							projectEnvironments.each { environment ->
+								environment.each { envKey, fileId ->
+									echo "  Environment: ${envKey}, File ID: ${fileId}"
+									// Realize as ações desejadas com os valores do JSON aqui
+								}
 							}
-							
-							project.qa.each { entry ->
-								echo "  QA - File ID: ${entry.fileId}"
-							}
-							
-							project.homolog.each { entry ->
-								echo "  Homolog - File ID: ${entry.fileId}"
-							}
+
 						}
 					}
 				}
