@@ -59,7 +59,7 @@ def call (Map pipelineParams) {
 						echo "Loading configured servers from file '${scriptjson}' ..." 
         				servers = readJSON(file:scriptjson)
 						
-						sh cleanLib.cleanFiles(File: "request.json")
+						//sh cleanLib.cleanFiles(File: "request.json")
 					}
 				}
 			}
