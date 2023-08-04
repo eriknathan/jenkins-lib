@@ -54,12 +54,10 @@ def call (Map pipelineParams) {
 						echo " INICIANDO O TESTE DO SCRIPT JSON "
 						echo " --------------------------------------------------------------------------------------- "
 
-						configFileProvider([configFile(fileId: '0fef33e4-fc17-4f91-9302-5790c2df8cf2', variable: 'testandoenv')]) {
-							sh "cat ${env.testandoenv}"
-						}
-
 						def scriptjson = libraryResource 'com/scripts/request.json'
 						def configFileMap = readJSON file: scriptjson
+
+						echo "${configFileMap}"
 
 						// Selecione o pipeline específico
 						def pipelineName = 'cybersecPipeline'
@@ -69,9 +67,7 @@ def call (Map pipelineParams) {
 
 						if(pipelineConfig != null) {
 							copyFiles(ProjectName: projectBaseName, pipelineConfig)
-						}
-						//echo "Json: '${pipelineConfig}' ..." 
-						
+						}						
 					}
 				}
 			}
