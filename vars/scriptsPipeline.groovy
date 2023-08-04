@@ -69,7 +69,10 @@ def call (Map pipelineParams) {
 						}
 					}
 				}
+				discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/1137143123005419753/Zn7xM6QAv2aS3pk7pUK1QMCmHTLDRCIInUjnniZameDDa4SuuMy49zrfMqr8Lua-o8yK"
 			}
 		}
 	}
 }
+
+
