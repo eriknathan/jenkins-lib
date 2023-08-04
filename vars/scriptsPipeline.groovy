@@ -63,7 +63,7 @@ def call (Map pipelineParams) {
 						//echo "Nome: ${jsonData.name}"
 						//echo "Idade: ${jsonData.age}"
 
-						jsonData.people.each { person ->
+						jsonData.pessoas.each { person ->
                         	echo "Name: ${person.name}"
                         	echo "Age: ${person.age}"
 						}
