@@ -75,8 +75,8 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def projectEnvironments = json.santacruz."santacruz-fe"
-						echo "JSON: ${projectEnvironments}"
+						//def projectEnvironments = json.santacruz."santacruz-fe"
+						// "JSON: ${projectEnvironments}"
 
 						//projects.each { projectKey, projectEnvironments ->
 						//	echo "Project: ${projectKey}"
@@ -87,11 +87,21 @@ def call (Map pipelineParams) {
 							// 		// Realize as ações desejadas com os valores do JSON aqui
 							// 	}
 							// }
-						projectEnvironments.each { environment ->
-							environment.each { envKey, fileId ->
-								echo "Branch: ${envKey} - ID: ${fileId}"
+						
+						//projectEnvironments.each { environment ->
+						//	environment.each { envKey, fileId ->
+						//		echo "Branch: ${envKey} - ID: ${fileId}"
 								// Realize as ações desejadas com os valores do JSON aqui
-							}
+						//	}
+						//}
+						def santacruzFeDevelop = json.santacruz."santacruz-fe".find { environment -> environment.containsKey("develop") }
+						def fileId = santacruzFeDevelop?.develop
+						
+						if (fileId) {
+							echo "File ID for develop in santacruz-fe: ${fileId}"
+							// Realize as ações desejadas com o valor do File ID aqui
+						} else {
+							echo "No develop environment found in santacruz-fe."
 						}
 					}
 				}
