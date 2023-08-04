@@ -1,13 +1,12 @@
 import sys
 
-def main():
+def script():
     if len(sys.argv) < 2:
-        print("Uso: python3 teste.py <argumento>")
+        print("Uso: python3 teste.py <argumentos>")
         return
 
     argumento = sys.argv[1]
 
     print(f": Olá {argumento}! Seja bem vindo ao JenkinsLib")
 
-if __name__ == "__main__":
-    main()
+script()

@@ -2,9 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def scriptLib = new com.scripts.ScriptLib()
 	def cleanLib = new com.functions.CleanLib()
-
 
     pipeline {
         agent { 
@@ -13,7 +11,7 @@ def call (Map pipelineParams) {
 
 		stages {
 			
-			stage('TesteShell') {
+			stage('Script Shell') {
                 steps {
                         
 					script {
@@ -26,6 +24,17 @@ def call (Map pipelineParams) {
 						sh 'bash ./segredos.sh Erik 21 Masc'
 
 						sh cleanLib.cleanFiles(File: "segredos.sh")
+					}
+				}
+			}
+
+			stage('Script Python') {
+                steps {
+                        
+					script {
+						echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O TESTE DO SCRIPT PYTHON "
+						echo " --------------------------------------------------------------------------------------- "
 
 						def scriptpython = libraryResource 'com/scripts/teste.py'
 						writeFile file: './teste.py', text: scriptpython
@@ -34,6 +43,40 @@ def call (Map pipelineParams) {
 						sh cleanLib.cleanFiles(File: "teste.py")
 					}
 				}
+			}
+
+			stage('Script Json') {
+                steps {
+                        
+					script {
+						echo " --------------------------------------------------------------------------------------- "
+						echo " INICIANDO O TESTE DO SCRIPT JSON "
+						echo " --------------------------------------------------------------------------------------- "
+
+						def scriptjson = libraryResource 'com/scripts/request.json'
+						sh 'cat "'+scriptjson+'"'
+						
+						sh cleanLib.cleanFiles(File: "request.json")
+					}
+				}
+			}
+		}
+		post {
+			always {
+				echo 'One way or another, I have finished'
+				deleteDir() /* clean up our workspace */
+			}
+			success {
+				echo 'I succeeded!'
+			}
+			unstable {
+				echo 'I am unstable :/'
+			}
+			failure {
+				echo 'I failed :('
+			}
+			changed {
+				echo 'Things were different before...'
 			}
 		}
 	}
