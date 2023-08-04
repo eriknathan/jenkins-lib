@@ -77,25 +77,22 @@ def call (Map pipelineParams) {
 					script {
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def projects = json.cybersec
+						def projects = json.santacruz
 						echo "JSON: ${projects}"
 
 						projects.each { projectKey, project ->
 							echo "Project: ${projectKey}"
 							
 							project.develop.each { entry ->
-								echo "  Develop - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
-								echo "DOCKER_IMAGE=TESTE >> ${entry.targetLocation}"
-							}
+								echo "  Develop - File ID: ${entry.fileId}"
+\							}
 							
 							project.qa.each { entry ->
-								echo "  QA - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
-								// Realize as ações desejadas com os valores do JSON aqui
+								echo "  QA - File ID: ${entry.fileId}"
 							}
 							
 							project.homolog.each { entry ->
-								echo "  Homolog - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
-								// Realize as ações desejadas com os valores do JSON aqui
+								echo "  Homolog - File ID: ${entry.fileId}"
 							}
 						}
 					}
