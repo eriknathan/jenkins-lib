@@ -1,16 +1,4 @@
 {
-    "cybersecPipeline": {
-        "cybersec-storybook": {
-            "develop": [
-                {"fileId": "0fef33e4-fc17-4f91-9302-5790c2df8cf2", "targetLocation": ".env"}
-            ]
-		}
-	},
-	"TestePipeline": {
-        "teste-storybook": {
-            "develop": [
-                {"fileId": "0fef33e4-fc17-4f91-9302-5790c2df8cf2", "targetLocation": ".env"}
-            ]
-		}
-	}
+	"name":"katone",
+	"age":5
 }
