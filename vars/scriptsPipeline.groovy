@@ -61,6 +61,8 @@ def call (Map pipelineParams) {
 						def pipelineName = 'cybersecPipeline'
 						def pipelineConfig = configFileMap[pipelineName]
 
+						echo "Expondo Json: ${pipelineConfig}"
+
 						if(pipelineConfig != null) {
 							copyFiles(ProjectName: projectBaseName, pipelineConfig)
 						}
