@@ -3,8 +3,9 @@
 def call (Map pipelineParams) {
 
 	def cleanLib = new com.functions.CleanLib()
-	def projectBaseName = "santacruz-fe"
-	def branchName = "develop"
+
+	pipelineParams.projectBaseName = "santacruz-fe"
+	pipelineParams.branchName = "develop"
 
     pipeline {
         agent { 
@@ -77,18 +78,25 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def projects = json.santacruz
+						def projectEnvironments = json.santacruz."${pipelineParams.projectBaseName}"
 						echo "JSON: ${projects}"
 
-						projects.each { projectKey, projectEnvironments ->
-							echo "Project: ${projectKey}"
+						//projects.each { projectKey, projectEnvironments ->
+						//	echo "Project: ${projectKey}"
 							
-							projectEnvironments.each { environment ->
-								environment.each { envKey, fileId ->
-									echo "Branch: ${envKey} - ID: ${fileId}"
-									// Realize as ações desejadas com os valores do JSON aqui
-								}
+							// projectEnvironments.each { environment ->
+							// 	environment.each { envKey, fileId ->
+							// 		echo "Branch: ${envKey} - ID: ${fileId}"
+							// 		// Realize as ações desejadas com os valores do JSON aqui
+							// 	}
+							// }
+						projectEnvironments.each { environment ->
+							environment.each { envKey, fileId ->
+								echo "Branch: ${envKey} - ID: ${fileId}"
+								// Realize as ações desejadas com os valores do JSON aqui
 							}
+						}
+
 
 						}
 					}
