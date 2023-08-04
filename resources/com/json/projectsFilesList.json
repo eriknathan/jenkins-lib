@@ -1,14 +1,14 @@
 {
     "santacruz": {
         "santacruz-fe": [
-            {"develop": "fa8393c4-9891-4d4f-9119-be7121b790e9"},
-            {"qa": "fa8393c4-9891-4d4f-9119-be7121b790e9"},
-            {"homolog": "fa8393c4-9891-4d4f-9119-be7121b790e9"}
+            {"develop": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"},
+            {"qa": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"},
+            {"homolog": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"}
         ],
         "santacruz-be": [
-            {"develop": "fa8393c4-9891-4d4f-9119-be7121b790e9"},
-            {"qa": "fa8393c4-9891-4d4f-9119-be7121b790e9"},
-            {"homolog": "fa8393c4-9891-4d4f-9119-be7121b790e9"}
+            {"develop": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"},
+            {"qa": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"},
+            {"homolog": "0fef33e4-fc17-4f91-9302-5790c2df8cf2"}
         ]
     }
 }
