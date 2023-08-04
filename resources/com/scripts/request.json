@@ -1,16 +1,16 @@
 {
     "pessoas": [
         {
-            "name": "Erik",
-            "age": 25
+            "nome": "Erik",
+            "idade": 25
         },
         {
-            "name": "Nathan",
-            "age": 28
+            "nome": "Nathan",
+            "idade": 28
         },
         {
-            "name": "Oliveira",
-            "age": 22
+            "nome": "Oliveira",
+            "idade": 22
         }
     ]
 }

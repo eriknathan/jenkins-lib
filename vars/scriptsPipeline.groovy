@@ -59,13 +59,13 @@ def call (Map pipelineParams) {
 						def jsonData = readJSON text: scriptjson
 						echo "JSON: ${jsonData}"
 
-						//assert jsonData['name'] == 'Nathan'
-						//echo "Nome: ${jsonData.name}"
-						//echo "Idade: ${jsonData.age}"
+						//assert jsonData['nome'] == 'Erik'
+						//echo "Nome: ${jsonData.nome}"
+						//echo "Idade: ${jsonData.idade}"
 
 						jsonData.pessoas.each { person ->
-                        	echo "Name: ${person.name}"
-                        	echo "Age: ${person.age}"
+                        	echo "Nome: ${person.nome}"
+                        	echo "Idade: ${person.idade}"
 						}
 					}
 				}
