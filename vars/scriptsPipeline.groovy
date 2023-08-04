@@ -3,6 +3,7 @@
 def call (Map pipelineParams) {
 
 	def cleanLib = new com.functions.CleanLib()
+	def projectBaseName = "cybersec-storybook"
 
     pipeline {
         agent { 
@@ -60,11 +61,23 @@ def call (Map pipelineParams) {
 						def pipelineName = 'cybersecPipeline'
 						def pipelineConfig = configFileMap[pipelineName]
 
-						echo "Json: '${pipelineConfig}' ..." 
+						if(pipelineConfig != null) {
+							copyFiles(ProjectName: projectBaseName, pipelineConfig)
+						}
+						//echo "Json: '${pipelineConfig}' ..." 
 						
 					}
 				}
 			}
 		}
 	}
+}
+
+// COPIANDO ARQUIVOS
+def copyFiles(Map params, Map pipelineConfig){
+    if (pipelineConfig.containsKey(params.ProjectName) && pipelineConfig[params.ProjectName].containsKey(env.BRANCH_NAME)) {
+        pipelineConfig[params.ProjectName][env.BRANCH_NAME].each { file ->
+            configFileProvider([configFile(fileId: file.fileId, targetLocation: file.targetLocation)]) {}
+        }
+    }
 }

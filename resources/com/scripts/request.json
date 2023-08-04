@@ -2,27 +2,8 @@
     "cybersecPipeline": {
         "cybersec-storybook": {
             "develop": [
-                {"fileId": "fa8393c4-9891-4d4f-9119-be7121b790e9", "targetLocation": ".env"}
-            ],
-            "qa": [],
-            "homolog": []
-        },
-        "cybersec-be": {
-            "develop": [
-                {"fileId": "e28a402e-e947-4902-91c8-5bde606f5fb8", "targetLocation": ".env"}
-            ],
-            "qa": [],
-            "homolog": [
-                {"fileId": "023acc3c-f702-45e8-b6c2-7243a5f25224", "targetLocation": ".env"}
+                {"fileId": "0fef33e4-fc17-4f91-9302-5790c2df8cf2", "targetLocation": ".env"}
             ]
-        },
-        "cybersec-fe": {
-            "develop": [
-                {"fileId": "78c538f2-cade-4026-8517-8ae01e59c28c", "targetLocation": ".env"}
-            ],
-            "qa": [],
-            "homolog": []
-        }
-    },
-    "mouraconnectorsPipeline": {}
+		}
+	}
 }
