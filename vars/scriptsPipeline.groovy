@@ -56,8 +56,8 @@ def call (Map pipelineParams) {
 						def scriptjson = libraryResource 'com/scripts/request.json'
 						//sh 'cat "'+scriptjson+'"'
 						
-						echo "Loading configured servers from file '${scriptjson}' ..." 
-        				servers = readJSON(file:scriptjson)
+						echo "Json: '${scriptjson}' ..." 
+        				//servers = readJSON(file:scriptjson)
 						
 						//sh cleanLib.cleanFiles(File: "request.json")
 					}
