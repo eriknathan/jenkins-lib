@@ -85,7 +85,7 @@ def call (Map pipelineParams) {
 							
 							project.develop.each { entry ->
 								echo "  Develop - File ID: ${entry.fileId}, Target: ${entry.targetLocation}"
-								// Realize as ações desejadas com os valores do JSON aqui
+								echo "DOCKER_IMAGE=TESTE >> ${entry.targetLocation}"
 							}
 							
 							project.qa.each { entry ->
