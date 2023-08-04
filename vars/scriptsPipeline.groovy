@@ -96,9 +96,6 @@ def call (Map pipelineParams) {
 								// Realize as ações desejadas com os valores do JSON aqui
 							}
 						}
-
-
-						}
 					}
 				}
 			}
