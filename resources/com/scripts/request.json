@@ -1,15 +1,15 @@
 {
     "people": [
         {
-            "name": "Alice",
+            "name": "Erik",
             "age": 25
         },
         {
-            "name": "Bob",
+            "name": "Nathan",
             "age": 28
         },
         {
-            "name": "Charlie",
+            "name": "Oliveira",
             "age": 22
         }
     ]
