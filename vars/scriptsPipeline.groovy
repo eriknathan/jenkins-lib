@@ -58,30 +58,13 @@ def call (Map pipelineParams) {
 
 						def jsonData = readJSON text: scriptjson
 						echo "JSON: ${jsonData}"
-						//echo "Valor da chave 'campo': ${jsonData.cybersec-storybook}"
-						// Aqui você pode adicionar mais lógica para processar os dados do JSON
 
-						// Selecione o pipeline específico
-						//def pipelineName = 'cybersecPipeline'
-						//def pipelineConfig = configFileMap[pipelineName]
-
-						//echo "Expondo Json: ${pipelineConfig}"
-
-						//if(pipelineConfig != null) {
-						//	copyFiles(ProjectName: projectBaseName, pipelineConfig)
-						//}						
+						assert jsonData['name'] == 'blablabla'  // this is a comparison.  It returns true
+						sh "echo ${jsonData.name}"  // prints out katone
+						sh "echo ${jsonData.age}"   // prints out 5
 					}
 				}
 			}
 		}
 	}
 }
-
-// COPIANDO ARQUIVOS
-// def copyFiles(Map params, Map pipelineConfig){
-//     if (pipelineConfig.containsKey(params.ProjectName) && pipelineConfig[params.ProjectName].containsKey(env.BRANCH_NAME)) {
-//         pipelineConfig[params.ProjectName][env.BRANCH_NAME].each { file ->
-//             configFileProvider([configFile(fileId: file.fileId, targetLocation: file.targetLocation)]) {}
-//         }
-//     }
-// }
