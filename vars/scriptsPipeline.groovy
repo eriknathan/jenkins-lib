@@ -56,27 +56,12 @@ def call (Map pipelineParams) {
 						def scriptjson = libraryResource 'com/scripts/request.json'
 						sh 'cat "'+scriptjson+'"'
 						
+						echo "Loading configured servers from file '${scriptjson}' ..." 
+        				servers = readJSON(file:scriptjson)
+						
 						sh cleanLib.cleanFiles(File: "request.json")
 					}
 				}
-			}
-		}
-		post {
-			always {
-				echo 'One way or another, I have finished'
-				deleteDir() /* clean up our workspace */
-			}
-			success {
-				echo 'I succeeded!'
-			}
-			unstable {
-				echo 'I am unstable :/'
-			}
-			failure {
-				echo 'I failed :('
-			}
-			changed {
-				echo 'Things were different before...'
 			}
 		}
 	}
