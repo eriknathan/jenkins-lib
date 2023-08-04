@@ -4,9 +4,6 @@ def call (Map pipelineParams) {
 
 	def cleanLib = new com.functions.CleanLib()
 
-	pipelineParams.projectBaseName = "santacruz-fe"
-	pipelineParams.branchName = "develop"
-
     pipeline {
         agent { 
             label 'ubuntu'
