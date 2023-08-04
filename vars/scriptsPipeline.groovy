@@ -59,7 +59,7 @@ def call (Map pipelineParams) {
 						def jsonData = readJSON text: scriptjson
 						echo "JSON: ${jsonData}"
 
-						assert jsonData['name'] == 'blablabla'  // this is a comparison.  It returns true
+						assert jsonData['name'] == 'Erik Nathan'  // this is a comparison.  It returns true
 						sh "echo ${jsonData.name}"  // prints out katone
 						sh "echo ${jsonData.age}"   // prints out 5
 					}
