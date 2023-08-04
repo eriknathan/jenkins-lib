@@ -54,12 +54,14 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
 
 						def scriptjson = libraryResource 'com/scripts/request.json'
-						//sh 'cat "'+scriptjson+'"'
+						def configFileMap = readJSON file: scriptjson
+
+						// Selecione o pipeline específico
+						def pipelineName = 'cybersecPipeline'
+						def pipelineConfig = configFileMap[pipelineName]
+
+						echo "Json: '${pipelineConfig}' ..." 
 						
-						echo "Json: '${scriptjson}' ..." 
-        				//servers = readJSON(file:scriptjson)
-						
-						//sh cleanLib.cleanFiles(File: "request.json")
 					}
 				}
 			}
