@@ -1,9 +1,7 @@
 // vars/exemploPipeline.groovy
 
 def call (Map pipelineParams) {
-
-	projectName = pipelineParams.projectName
-
+	
     pipeline {
         agent { 
             label 'ubuntu'
@@ -38,7 +36,7 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " ONDE JSON PROJECT: [${projectName}]"
+						echo " ONDE JSON PROJECT: [${pipelineParams.projectName}]"
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
