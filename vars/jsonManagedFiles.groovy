@@ -19,10 +19,10 @@ def call (Map pipelineParams) {
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
 						def projects = json.santacruz
-						projects.each { projectKey, projectEnvironments ->
-							echo "Project: ${projectKey}"
+						projects.each { project, projectIdEnvs ->
+							echo "Project: ${project}"
 							
-							projectEnvironments.each { environment ->
+							projectIdEnvs.each { environment ->
 								environment.each { envKey, fileId ->
 									echo " Branch: ${envKey} - ID: ${fileId}"
 								}
@@ -36,7 +36,7 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " ONDE JSON PROJECT "
+						echo " ONDE JSON PROJECT: [santacruz-fe]"
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
@@ -65,9 +65,9 @@ def call (Map pipelineParams) {
 						def fileId = santacruzFeDevelop?.develop
 						
 						if (fileId) {
-							echo "File ID for develop in santacruz-fe: ${fileId}"
+							echo "ID branch develop do projeto santacruz-fe: ${fileId}"
 						} else {
-							echo "No develop environment found in santacruz-fe."
+							echo "Não foi encontrando o Id da branch develop no projeto santacruz-fe."
 						}
 					}
 				}
@@ -91,8 +91,10 @@ def call (Map pipelineParams) {
                    		}
 						
 						if (fileId) {
-							echo "File ID for develop in santacruz-fe: ${fileId}"
+							echo "ID branch develop do projeto santacruz-fe: ${fileId}"
 							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
+						} else {
+							echo "Não foi encontrando o Id da branch develop no projeto santacruz-fe."
 						}
 					}
 				}
