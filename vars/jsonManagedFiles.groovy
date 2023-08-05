@@ -63,8 +63,8 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def "${pipelineParams.projectName}"-"${branchName}" = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("${branchName}") }
-						def fileId = "${pipelineParams.projectName}"-"${branchName}"?."${branchName}"
+						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("${branchName}") }
+						def fileId = santacruzFeDevelop?.${branchName}
 						
 						if (fileId) {
 							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
