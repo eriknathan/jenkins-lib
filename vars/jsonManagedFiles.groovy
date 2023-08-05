@@ -85,12 +85,14 @@ def call (Map pipelineParams) {
 						def json = readJSON text: envjson
 
 						// Usa o método findResult para buscar o valor do ambiente "develop" no projeto "santacruz-fe"
-						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment ->
+						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment ->
                         // A expressão condicional verifica se o ambiente possui a chave "develop"
                         // Se sim, retorna o valor do ambiente "develop", senão retorna null
-                        environment.containsKey("develop") ? environment.develop : null }
+                        environment.containsKey("develop") ? environment.develop : null
+						}
 						
-						if (santacruzFeDevelop) {
+						// Verifica se o fileId foi encontrado
+						if (fileId) {
 							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${santacruzFeDevelop}"
 							configFileProvider([configFile(fileId: santacruzFeDevelop, targetLocation: '.env')]) {}
 						} else {
