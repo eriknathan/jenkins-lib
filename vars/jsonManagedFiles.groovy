@@ -88,7 +88,7 @@ def call (Map pipelineParams) {
 						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("develop") }
 						
 						if (santacruzFeDevelop) {
-							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${santacruzFeDevelop}"
 							configFileProvider([configFile(fileId: santacruzFeDevelop, targetLocation: '.env')]) {}
 						} else {
 							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
