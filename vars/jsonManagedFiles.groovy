@@ -63,7 +63,7 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("develop") }
+						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("${branchName}") }
 						def fileId = santacruzFeDevelop?.develop
 						
 						if (fileId) {
@@ -89,7 +89,7 @@ def call (Map pipelineParams) {
 						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment -> 
 							// A expressão condicional verifica se o ambiente possui a chave "develop"
 							// Se sim, retorna o valor do ambiente "develop", senão retorna null
-							environment.containsKey("develop") ? environment.develop : null
+							environment.containsKey("${branchName}") ? environment.develop : null
                    		}
 						
 						if (fileId) {
