@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def projectName = pipelineParams.projectName
+	projectName = pipelineParams.projectName
 
     pipeline {
         agent { 
