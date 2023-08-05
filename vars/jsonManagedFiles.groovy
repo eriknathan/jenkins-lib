@@ -2,6 +2,8 @@
 
 def call (Map pipelineParams) {
 
+	def branchName = "develop"
+
     pipeline {
         agent { 
             label 'ubuntu'
@@ -56,18 +58,18 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " READ JSON PROJECT DEVELOP "
+						echo " READ JSON PROJECT: ${branchName} "
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("develop") }
-						def fileId = santacruzFeDevelop?.develop
+						def "${pipelineParams.projectName}"-"${branchName}" = json.santacruz."${pipelineParams.projectName}".find { environment -> environment.containsKey("${branchName}") }
+						def fileId = "${pipelineParams.projectName}"-"${branchName}"?."${branchName}"
 						
 						if (fileId) {
-							echo "ID branch develop do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
 						} else {
-							echo "Não foi encontrando o Id da branch develop no projeto ${pipelineParams.projectName}."
+							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
 						}
 					}
 				}
@@ -87,14 +89,14 @@ def call (Map pipelineParams) {
 						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment -> 
 							// A expressão condicional verifica se o ambiente possui a chave "develop"
 							// Se sim, retorna o valor do ambiente "develop", senão retorna null
-							environment.containsKey("develop") ? environment.develop : null
+							environment.containsKey("${branchName}") ? environment."${branchName}" : null
                    		}
 						
 						if (fileId) {
-							echo "ID branch develop do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
 							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
 						} else {
-							echo "Não foi encontrando o Id da branch develop no projeto ${pipelineParams.projectName}."
+							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
 						}
 					}
 				}
