@@ -2,6 +2,8 @@
 
 def call (Map pipelineParams) {
 
+	def projectName = pipelineParams.projectName
+
     pipeline {
         agent { 
             label 'ubuntu'
@@ -36,7 +38,7 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " ONDE JSON PROJECT: [${pipelineParams.projectName}]"
+						echo " ONDE JSON PROJECT: [${projectName}]"
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
