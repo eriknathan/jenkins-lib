@@ -60,8 +60,8 @@ def call (Map pipelineParams) {
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
-						def json = readJSON text: json
-						def santacruzFeDevelop = jsonData.santacruz."santacruz-fe".find { environment -> environment.containsKey("develop") }
+						def json = readJSON text: envjson
+						def santacruzFeDevelop = json.santacruz."santacruz-fe".find { environment -> environment.containsKey("develop") }
 						def fileId = santacruzFeDevelop?.develop
 						
 						if (fileId) {
