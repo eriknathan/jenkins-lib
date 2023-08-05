@@ -36,7 +36,7 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " ONDE JSON PROJECT: [santacruz-fe]"
+						echo " ONDE JSON PROJECT: [${pipelineParams.projectName}]"
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
