@@ -88,7 +88,7 @@ def call (Map pipelineParams) {
 						def santacruzFeDevelop = json.santacruz."${pipelineParams.projectName}".find { environment ->
                         // A expressão condicional verifica se o ambiente possui a chave "develop"
                         // Se sim, retorna o valor do ambiente "develop", senão retorna null
-                        environment.containsKey("develop") ? environment.develop : null
+                        environment.containsKey("develop") ? environment.develop : null }
 						
 						if (santacruzFeDevelop) {
 							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${santacruzFeDevelop}"
