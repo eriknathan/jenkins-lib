@@ -93,8 +93,8 @@ def call (Map pipelineParams) {
 						
 						// Verifica se o fileId foi encontrado
 						if (fileId) {
-							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${santacruzFeDevelop}"
-							configFileProvider([configFile(fileId: santacruzFeDevelop, targetLocation: '.env')]) {}
+							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
 						} else {
 							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
 						}
