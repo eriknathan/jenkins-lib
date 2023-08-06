@@ -107,7 +107,7 @@ def call (Map pipelineParams) {
 						echo " COPY FILES - JSON MANAGED FILES "
 						echo " --------------------------------------------------------------------------------------- "
 
-						copyFiles(ProjectName: pipelineParams.projectName, branchName)
+						copyFiles(ProjectName: pipelineParams.projectName, BranchName: branchName)
 					}
 				}
 			}
@@ -115,7 +115,7 @@ def call (Map pipelineParams) {
 	}
 }
 
-def copyFiles(Map params){
+def copyFiles(Map params) {
 	def envjson = libraryResource 'com/json/projectsFilesList.json'
 	def json = readJSON text: envjson
 
