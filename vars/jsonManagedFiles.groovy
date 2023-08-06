@@ -88,7 +88,8 @@ def call (Map pipelineParams) {
 						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment ->
                         // A expressão condicional verifica se o ambiente possui a chave "develop"
                         // Se sim, retorna o valor do ambiente "develop", senão retorna null
-                        environment.containsKey("develop") ? environment.develop : null	}
+                        //environment.containsKey("develop") ? environment.develop : null	}
+                        environment.develop}
 						
 						// Verifica se o fileId foi encontrado
 						if (fileId) {
@@ -103,3 +104,13 @@ def call (Map pipelineParams) {
 		}
 	}
 }
+
+def copyFiles(Map params, Map configFileMap){
+	def envjson = libraryResource 'com/json/projectsFilesList.json'
+	def json = readJSON text: envjson
+
+	def keyToFind = 'homolog' // Troque para 'develop', 'qa', etc. conforme necessário
+	def fileId = json.santacruz."santacruz-fe".findResult { environment ->
+		environment[keyToFind]
+	}
+} 
