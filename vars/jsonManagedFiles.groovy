@@ -122,9 +122,9 @@ def copyFiles(Map params) {
 	def fileId = json.santacruz."${params.ProjectName}".findResult { environment -> environment[branchName] }
 
 	if (fileId) {
-		echo "ID branch ${params.BranchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+		echo "ID branch ${params.BranchName} do projeto ${params.ProjectName}: ${fileId}"
 		configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
 	} else {
-		echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
+		echo "Não foi encontrando o Id da branch ${params.branchName} no projeto ${params.ProjectName}."
 	}
 } 
