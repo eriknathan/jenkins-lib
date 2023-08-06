@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def branchName = "develop"
+	def branchName = "homolog"
 
     pipeline {
         agent { 
