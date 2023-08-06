@@ -99,16 +99,32 @@ def call (Map pipelineParams) {
 					}
 				}
 			}
+
+			stage('Copy Files') {
+				steps {
+					script {
+						echo " --------------------------------------------------------------------------------------- "
+						echo " COPY FILES - JSON MANAGED FILES "
+						echo " --------------------------------------------------------------------------------------- "
+
+						copyFiles(ProjectName: pipelineParams.projectName, branchName)
+					}
+				}
+			}
 		}
 	}
 }
 
-def copyFiles(Map params, Map configFileMap){
+def copyFiles(Map params){
 	def envjson = libraryResource 'com/json/projectsFilesList.json'
 	def json = readJSON text: envjson
 
-	def keyToFind = 'homolog' // Troque para 'develop', 'qa', etc. conforme necessário
-	def fileId = json.santacruz."santacruz-fe".findResult { environment ->
-		environment[keyToFind]
+	def fileId = json.santacruz."${params.ProjectName}".findResult { environment -> environment[branchName] }
+
+	if (fileId) {
+		echo "ID branch ${params.BranchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+		configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
+	} else {
+		echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
 	}
 } 
