@@ -108,25 +108,14 @@ def call (Map pipelineParams) {
 					}
 				}
 			}
-
-			stage('Functions Copy Files') {
-				steps {
-					script {
-						echo " --------------------------------------------------------------------------------------- "
-						echo " COPY FILES - JSON MANAGED FILES "
-						echo " --------------------------------------------------------------------------------------- "
-
-						configLib.copyFiles()
-					}
-				}
-			}
 		}
 	}
 }
 
 def copyFiles(Map params) {
-	def envjson = libraryResource 'com/json/projectsFilesList.json'
-	def json = readJSON text: envjson
+	//def envjson = libraryResource 'com/json/projectsFilesList.json'
+	//def json = readJSON text: envjson
+	def json = readJSON text: libraryResource 'com/json/projectsFilesList.json'
 
 	def fileId = json.santacruz."${params.ProjectName}".findResult { environment -> environment["${params.BranchName}"] }
 
