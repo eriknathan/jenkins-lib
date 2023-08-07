@@ -112,7 +112,7 @@ def call (Map pipelineParams) {
 
 def copyFiles(Map params) {
 	def envjson = libraryResource 'com/json/projectsFilesList.json'
-	def json = readJSON text: envjson
+	def json = readJSON text: 'com/json/projectsFilesList.json'
 
 	def fileId = json.santacruz."${params.ProjectName}".findResult { environment -> environment["${params.BranchName}"] }
 
