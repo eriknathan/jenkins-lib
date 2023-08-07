@@ -102,7 +102,7 @@ def call (Map pipelineParams) {
 						echo " COPY FILES - JSON MANAGED FILES "
 						echo " --------------------------------------------------------------------------------------- "
 
-						copyFiles(ProjectName: pipelineParams.projectName, BranchName: "${branchName}")
+						copyFiles(ProjectName: pipelineParams.projectName, BranchName: branchName)
 					}
 				}
 			}
