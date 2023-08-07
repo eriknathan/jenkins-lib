@@ -4,9 +4,6 @@ def call (Map pipelineParams) {
 
 	def cleanLib = new com.functions.CleanLib()
 
-	def environmentName = "santacruz-fe"
-	def branchName = "develop"
-
     pipeline {
         agent { 
             label 'ubuntu'
@@ -58,10 +55,10 @@ def call (Map pipelineParams) {
 
 						def scriptjson = libraryResource 'com/json/request.json'
 
-						def jsonData = readJSON text: scriptjson
-						echo "JSON: ${jsonData}"
+						def json = readJSON text: scriptjson
+						echo "JSON: ${json}"
 
-						jsonData.pessoas.each { person ->
+						json.pessoas.each { person ->
                         	echo "Nome: ${person.nome}"
                         	echo "Idade: ${person.idade}"
 						}

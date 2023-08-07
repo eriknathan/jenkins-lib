@@ -20,8 +20,8 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def projects = json.santacruz
-						projects.each { project, projectIdEnvs ->
+						def project = json.santacruz
+						project.each { project, projectIdEnvs ->
 							echo "Project: ${project}"
 							
 							projectIdEnvs.each { environment ->
@@ -66,7 +66,7 @@ def call (Map pipelineParams) {
 						def fileId = json.santacruz."${pipelineParams.projectName}".find { environment -> environment[branchName] }
 						
 						if (fileId) {
-							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID da branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
 						} else {
 							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
 						}
@@ -83,15 +83,10 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						// Usa o método findResult para buscar o valor do ambiente "develop" no projeto "santacruz-fe"
-						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment ->
-                        // A expressão condicional verifica se o ambiente possui a chave "develop"
-                        // Se sim, retorna o valor do ambiente "develop", senão retorna null
-                        environment[branchName] }
+						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment -> environment[branchName] }
 						
-						// Verifica se o fileId foi encontrado
 						if (fileId) {
-							echo "ID branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID da branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
 							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
 						} else {
 							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
