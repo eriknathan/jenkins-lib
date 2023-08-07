@@ -1,8 +1,8 @@
-// src/com/functions/ConfigFile.groovy
+// src/com/functions/ConfigLib.groovy
 
 package com.functions
 
-class ConfigFileLib {
+class ConfigLib {
 	def copyFiles(Map params) {
 		def envjson = libraryResource 'com/json/projectsFilesList.json'
 		def json = readJSON text: envjson
@@ -17,4 +17,3 @@ class ConfigFileLib {
 		}
 	} 
 }
-

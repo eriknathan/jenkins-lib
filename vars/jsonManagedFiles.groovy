@@ -2,7 +2,7 @@
 
 def call (Map pipelineParams) {
 
-	def configFileLib = new com.functions.ConfigFile()
+	def configLib = new com.functions.ConfigLib() 	
 
 	def branchName = "homolog"
 
@@ -116,7 +116,7 @@ def call (Map pipelineParams) {
 						echo " COPY FILES - JSON MANAGED FILES "
 						echo " --------------------------------------------------------------------------------------- "
 
-						configFileLib.copyFiles(ProjectName: pipelineParams.projectName, BranchName: "${branchName}")
+						configLib.copyFiles(ProjectName: pipelineParams.projectName, BranchName: "${branchName}")
 					}
 				}
 			}
