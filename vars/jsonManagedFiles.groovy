@@ -116,7 +116,7 @@ def call (Map pipelineParams) {
 						echo " COPY FILES - JSON MANAGED FILES "
 						echo " --------------------------------------------------------------------------------------- "
 
-						configLib.copyFiles(ProjectName: pipelineParams.projectName, BranchName: "${branchName}")
+						configLib.copyFiles(ProjectName: pipelineParams.projectName, BranchName: branchName)
 					}
 				}
 			}
