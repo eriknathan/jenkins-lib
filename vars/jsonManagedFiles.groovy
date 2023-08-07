@@ -2,8 +2,6 @@
 
 def call (Map pipelineParams) {
 
-	def configLib = new com.functions.ConfigLib() 	
-
 	def branchName = "homolog"
 
     pipeline {
@@ -113,9 +111,8 @@ def call (Map pipelineParams) {
 }
 
 def copyFiles(Map params) {
-	//def envjson = libraryResource 'com/json/projectsFilesList.json'
-	//def json = readJSON text: envjson
-	def json = readJSON text: libraryResource 'com/json/projectsFilesList.json'
+	def envjson = libraryResource 'com/json/projectsFilesList.json'
+	def json = readJSON text: envjson
 
 	def fileId = json.santacruz."${params.ProjectName}".findResult { environment -> environment["${params.BranchName}"] }
 
