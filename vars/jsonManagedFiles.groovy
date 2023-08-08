@@ -8,8 +8,7 @@ def call (Map pipelineParams) {
         }
 
 		environment {
-			// Definir variáveis de ambiente aqui
-			BRANCH_NAME = 'homolog'
+			BRANCH_NAME = 'qa'
 		}
 
 		stages {
