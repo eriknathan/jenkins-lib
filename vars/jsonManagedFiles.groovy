@@ -61,12 +61,12 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " READ JSON PROJECT: $BRANCH_NAME "
+						echo " READ JSON PROJECT: $BRANCH_NAME"
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def fileId = json.santacruz."${pipelineParams.projectName}".find { environment -> environment[branchName] }
+						def fileId = json.santacruz."${pipelineParams.projectName}".find { environment -> environment[BRANCH_NAME] }
 						
 						if (fileId) {
 							echo "ID da branch $BRANCH_NAME do projeto ${pipelineParams.projectName}: ${fileId}"
