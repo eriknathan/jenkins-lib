@@ -2,12 +2,15 @@
 
 def call (Map pipelineParams) {
 
-	def branchName = "homolog"
-
     pipeline {
         agent { 
             label 'ubuntu'
         }
+
+		environment {
+			// Definir variáveis de ambiente aqui
+			BRANCH_NAME = 'homolog'
+		}
 
 		stages {
 
@@ -58,7 +61,7 @@ def call (Map pipelineParams) {
 				steps {
 					script {
 						echo " --------------------------------------------------------------------------------------- "
-						echo " READ JSON PROJECT: ${branchName} "
+						echo " READ JSON PROJECT: $BRANCH_NAME "
 						echo " --------------------------------------------------------------------------------------- "
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
@@ -66,9 +69,9 @@ def call (Map pipelineParams) {
 						def fileId = json.santacruz."${pipelineParams.projectName}".find { environment -> environment[branchName] }
 						
 						if (fileId) {
-							echo "ID da branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID da branch $BRANCH_NAME do projeto ${pipelineParams.projectName}: ${fileId}"
 						} else {
-							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
+							echo "Não foi encontrando o Id da branch $BRANCH_NAME no projeto ${pipelineParams.projectName}."
 						}
 					}
 				}
@@ -83,13 +86,13 @@ def call (Map pipelineParams) {
 
 						def envjson = libraryResource 'com/json/projectsFilesList.json'
 						def json = readJSON text: envjson
-						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment -> environment[branchName] }
+						def fileId = json.santacruz."${pipelineParams.projectName}".findResult { environment -> environment[BRANCH_NAME] }
 						
 						if (fileId) {
-							echo "ID da branch ${branchName} do projeto ${pipelineParams.projectName}: ${fileId}"
+							echo "ID da branch $BRANCH_NAME do projeto ${pipelineParams.projectName}: ${fileId}"
 							configFileProvider([configFile(fileId: fileId, targetLocation: '.env')]) {}
 						} else {
-							echo "Não foi encontrando o Id da branch ${branchName} no projeto ${pipelineParams.projectName}."
+							echo "Não foi encontrando o Id da branch $BRANCH_NAME no projeto ${pipelineParams.projectName}."
 						}
 					}
 				}
@@ -102,7 +105,7 @@ def call (Map pipelineParams) {
 						echo " COPY FILES - JSON MANAGED FILES "
 						echo " --------------------------------------------------------------------------------------- "
 
-						copyFiles(ProjectName: pipelineParams.projectName, BranchName: branchName)
+						copyFiles(ProjectName: pipelineParams.projectName, BranchName: BRANCH_NAME)
 					}
 				}
 			}
