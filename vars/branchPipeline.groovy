@@ -31,7 +31,7 @@ def call (Map pipelineParams) {
 					}
 				}
 				agent {
-					label determineAgent(env.BRANCH_NAME)
+					label determineAgent(BRANCH_NAME)
 				}
 				steps {
 					echo "Pegou"
