@@ -66,21 +66,6 @@ def call (Map pipelineParams) {
 				}
 			}
 		}
-		post {
-			always {
-				// Passo de publicação para gerar o Embeddable Build Status
-				script {
-					publishHTML(
-						allowMissing: false,
-						alwaysLinkToLastBuild: true,
-						keepAll: true,
-						reportDir: 'path/to/your/build/reports',
-						reportFiles: 'build-status-report.html',
-						reportName: 'Build Status'
-					)
-				}
-			}
-		}
 	}
 }
 
