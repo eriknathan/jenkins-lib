@@ -9,7 +9,7 @@ def call (Map pipelineParams) {
 
 		environment {
 			DOCKER_IMAGE = "${DOCKER_HUB}/${projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
-			BRANCH_NAME = "prod"
+			BRANCH_NAME = "homolog"
 			PROJECT_NAME = "santacruz"
 		}
 
