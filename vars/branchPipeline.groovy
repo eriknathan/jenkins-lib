@@ -9,7 +9,7 @@ def call (Map pipelineParams) {
 
 		environment {
 			DOCKER_IMAGE = "${DOCKER_HUB}/${projectName}:${BRANCH_NAME}-${BUILD_NUMBER}"
-			BRANCH_NAME = "develop"
+			BRANCH_NAME = "prod"
 			PROJECT_NAME = "santacruz"
 		}
 
@@ -49,7 +49,7 @@ def determineAgent(branchName) {
         case 'prod':
             return 'servidor'
         case 'homolog':
-            return 'nuvem'
+            return 'ubuntu'
         default:
             return 'agente_padrao' // Agente padrão para outras branches
     }
